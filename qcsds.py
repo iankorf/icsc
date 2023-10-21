@@ -13,7 +13,11 @@ def create(arg):
 	if not os.path.isdir(arg.data): os.system(f'mkdir {arg.data}')
 	url = 'https://api.mmrrc.org/api/v1/catalog/getCatalog'
 	
-	page = 1
+	try:
+		page = arg.page
+	except AttributeError:
+		page = 1
+	
 	while True: 
 		call = f'{url}/{page}'
 		r = requests.get(call)
@@ -43,6 +47,15 @@ subparsers = parser.add_subparsers(required=True, help='sub-commands')
 ### create sub-command
 parse_create = subparsers.add_parser('create',
 	help='create a new json catalog')
+parse_create.add_argument('--sleep', type=float, default=0.5,
+	help='sleep time between API requests [%(default).2f]')
+parse_create.set_defaults(func=create)
+
+### update sub-command (create with a specific page start)
+parse_create = subparsers.add_parser('update',
+	help='update an existing json catalog')
+parse_create.add_argument('--page', type=int, required=True,
+	help='starting page number')
 parse_create.add_argument('--sleep', type=float, default=0.5,
 	help='sleep time between API requests [%(default).2f]')
 parse_create.set_defaults(func=create)
