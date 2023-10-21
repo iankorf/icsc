@@ -23,3 +23,5 @@ several sub-commands. Start by creating the SDS data dump.
 
 	python3 qcsds.py create sds
 
+On 2023-10-21, there were 700 pages and 69,891 records. It took about 20
+minutes to run with 0.5 sec (default) between API requests.
