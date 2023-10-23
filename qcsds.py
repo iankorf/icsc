@@ -5,6 +5,13 @@ import requests
 import sys
 import time
 
+def read_all_sds(sdspath, test):
+	for path, dirs, files in os.walk(sdspath):
+		for i, f in enumerate(files):
+			if test and i == 1000: break
+			with open(f'{path}/{f}') as fp:
+				yield json.loads(fp.read())
+
 def save_json(filename, data):
 	with open(filename, 'w') as fp:
 		fp.write(json.dumps(data, indent=4))
@@ -33,7 +40,6 @@ def get_sds(mid):
 
 def update(arg):
 	if not os.path.isdir(arg.data): os.system(f'mkdir {arg.data}')
-
 	for page in range(arg.start, arg.end+1):
 		print(f'processing page {page}', file=sys.stderr)
 		for mid in get_mids(page):
@@ -45,13 +51,20 @@ def update(arg):
 		print(file=sys.stderr)
 		time.sleep(arg.sleep)
 
-def count(arg):
+def count_field(arg):
 	count = {}
-	for mid in range(arg.start, arg.end+1):
-		jfile = f'{arg.data}/{mid}.json'
-		if not os.path.isfile(jfile): continue
-		with open(jfile) as fp:
-			data = json.loads(fp.read())
+	for data in read_all_sds(arg.data, arg.test):
+		val = data[arg.field]
+		if val not in count: count[val] = 0
+		count[val] += 1
+	for key, val in sorted(count.items(), key=lambda item: item[1]):
+		print(val, f"'{key}'", sep='\t')
+	sys.exit(0)
+
+def count(arg):
+	if arg.field: count_field(arg)
+	count = {}
+	for data in read_all_sds(arg.data, arg.test):
 		for key, val in data.items():
 			if key not in count and key != 'alterations':
 				count[key] = {'null': 0, 'str': 0}
@@ -77,19 +90,34 @@ def count(arg):
 	for f in count:
 		print(f, count[f]['str'], count[f]['null'], sep='\t')
 
-def validate(arg):
-	for mid in range(arg.start, arg.end+1):
-		jfile = f'{arg.data}/{mid}.json'
-		if not os.path.isfile(jfile): continue
-		with open(jfile) as fp:
-			data = json.loads(fp.read())
+def explore(arg):
+	count = {}
+	for data in read_all_sds(arg.data, arg.test):
+		val = data[arg.field]
+		if val not in count: count[val] = []
+		count[val].append(data['mmrrc_id'])
+	for key, val in sorted(count.items(), key=lambda item: len(item[1]),
+			reverse=True):
+		print(f"'{key}'")
+		for mid in val:
+			print(f'\t{mid}')
 
-## CLI top-level ##
+def validate(arg):
+	for data in read_all_sds(arg.data, arg.test):
+		print(data['mmrrc_id'])
+
+def fix1(arg):
+	pass
+
+def fix2(arg):
+	pass
+
+# CLI top-level
 parser = argparse.ArgumentParser(description='automating SDS stuff')
 parser.add_argument('data', help='path to sds data directory')
 subparsers = parser.add_subparsers(required=True, help='sub-commands')
 
-### update sub-command
+# update sub-command
 parse_up = subparsers.add_parser('update',
 	help='create/update sds.json files')
 parse_up.add_argument('--start', type=int, default=1, required=False,
@@ -100,30 +128,41 @@ parse_up.add_argument('--sleep', type=float, default=0.5,
 	help='sleep time between API requests [%(default).2f]')
 parse_up.set_defaults(func=update)
 
-### count sub-command
+# count sub-command
 parse_count = subparsers.add_parser('count',
 	help='count data in all fields')
-parse_count.add_argument('--start', type=int, default=1, required=False,
-	help='starting record number [%(default)i)')
-parse_count.add_argument('--end', type=int, default=0, required=False,
-	help='ending page number [%(default)i]')
+parse_count.add_argument('--field', type=str, required=False,
+	help='examine a specific field')
+parse_count.add_argument('--test', action='store_true')
 parse_count.set_defaults(func=count)
 
-### validate sub-command
-parse_val = subparsers.add_parser('validate',
-	help='perform some QC checks')
-parse_val.add_argument('--start', type=int, default=1, required=False,
-	help='starting record number [%(default)i)')
-parse_val.add_argument('--end', type=int, default=0, required=False,
-	help='ending page number [%(default)i]')
+# explore sub-command
+parse_explore = subparsers.add_parser('explore', help='deep dive on field')
+parse_explore.add_argument('field')
+parse_explore.add_argument('--test', action='store_true')
+parse_explore.set_defaults(func=explore)
+
+# validate sub-command
+parse_val = subparsers.add_parser('validate', help='perform some QC checks')
+parse_val.add_argument('--test', action='store_true')
 parse_val.set_defaults(func=validate)
 
-### sub-command checkpoint
+# fix sub-commands (planning for several
+parse_fix1 = subparsers.add_parser('fix1', help='repair #1')
+parse_fix1.add_argument('--test', action='store_true')
+parse_fix1.set_defaults(func=fix1)
+
+parse_fix2 = subparsers.add_parser('fix2', help='repair #2')
+parse_fix2.add_argument('--test', action='store_true')
+parse_fix2.set_defaults(func=fix2)
+
+# sub-command checkpoint
 try:
 	arg = parser.parse_args()
 except:
 	print(f'{sys.argv[0]} requires a sub-command, use --help for more info')
 	sys.exit(1)
 
-## Run subcommand ##
+# Run subcommand
 arg.func(arg)
+sys.exit(0)
