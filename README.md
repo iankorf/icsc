@@ -23,6 +23,7 @@ several sub-commands. Start by creating the SDS data dump.
 
 	python3 qcsds.py sds update --sleep 0.1
 
-On 2023-10-22, there were 699 pages and 69,891 records (last record 71619).  It
+On 2023-10-22, there were 699 pages and 69,891 records (last record 71619). It
 took about 5 hours to run with 0.1 sec between API requests. The tar-ball
-weighs in at 723M (73M compressed).
+weighs in at 70M compressed (10-fold compression). Because the file isn't so
+large, it is contained in the repo.
