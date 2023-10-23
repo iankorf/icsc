@@ -21,7 +21,9 @@ Run the script. It downloads all the files it needs and creates a report.
 `qcsds.py` downloads all SDS pages and then does some QC activities. There are
 several sub-commands. Start by creating the SDS data dump.
 
-	python3 qcsds.py sds create
+	python3 qcsds.py sds update --sleep 0.1
 
-On 2023-10-21, there were 700 pages and 69,891 records. It took about 20
-minutes to run with 0.5 sec (default) between API requests.
+On 2023-10-22, there were 699 pages and 69,891 records (last record 71619).  It
+took about 5 hours to run with 0.1 sec between API requests. The json files
+comprised 757M uncompressed.
+
