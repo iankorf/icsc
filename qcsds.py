@@ -98,13 +98,25 @@ def explore(arg):
 		count[val].append(data['mmrrc_id'])
 	for key, val in sorted(count.items(), key=lambda item: len(item[1]),
 			reverse=True):
-		print(f"'{key}'")
+		print(f"'{key}' {len(val)}")
 		for mid in val:
 			print(f'\t{mid}')
 
+def find(arg):
+	for data in read_all_sds(arg.data, arg.test):
+		ok = True
+		for query in arg.query:
+			tag, val = query.split(':')
+			if data[tag] != val:
+				ok = False
+				break
+		if ok: print(data['mmrrc_id']) 
+			
+		#if data['sds_status'] == 'N/A': print(data['mmrrc_id'])
+
 def validate(arg):
 	for data in read_all_sds(arg.data, arg.test):
-		print(data['mmrrc_id'])
+		if data['sds_status'] == 'N/A': print(data['mmrrc_id'])
 
 def fix1(arg):
 	pass
@@ -141,6 +153,14 @@ parse_explore = subparsers.add_parser('explore', help='deep dive on field')
 parse_explore.add_argument('field')
 parse_explore.add_argument('--test', action='store_true')
 parse_explore.set_defaults(func=explore)
+
+# find sub-command
+parse_find = subparsers.add_parser('find',
+	help='find specific records as tag:value with implicit AND between queries')
+parse_find.add_argument('query', nargs='*', help='tag:value')
+parse_find.add_argument('--test', action='store_true')
+parse_find.set_defaults(func=find)
+
 
 # validate sub-command
 parse_val = subparsers.add_parser('validate', help='perform some QC checks')
