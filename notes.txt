@@ -1,0 +1,77 @@
+QC Notes
+========
+
+## schema ##
+
++ why are numeric values strings?
++ why do we enumerate boolean as Yes/No and 1/0 but not true/false?
++ why is there more than one boolean representation?
++ why do Yes/No appear in non-boolean contexts?
++ why does homozygosity_yn exist rather than is_homozygous?
++ why does "is_standard" show up in the sds json but not in the schema?
++ why is the value for "is_standard" 1 rather than true or "YES"?
++ why is species enum such a train wreck?
+
+## mmrrc_id ##
+
+All 69886 have a unique id used exactly once.
+
+## doc_title ##
+
+95% of records do not have a doc_title. Among those that do, there are some
+duplicate titles that look like typos.
+
++ "" 66402
++ " " 0
+
+Typos
+
++ 31781: 31781 32781
++ 31782: 31782 32782
++ 31778: 31778 32778
++ 31779: 31779 32779
+
+## published_name ##
+
+Appears to be a comma separated list, sometimes with genotype. Some of the
+lists have trailing commas. Some names don't look like publshed names.
+
++ "" 38939
++ " " 11320
+
+Really?
+
++ "inbred High Drinking in the Dark - replicate 2 (iHDID-2)"
++ "Dsgsqk" is probably Dsg3<sup>sqk</sup>
++ "C57BL/6J-Matr3^em3Lutzy/Mmjax" do we allow ^?
++ "<em>Mr.Magoo</em>" is that really a mouse name?
++ "<em>zeitgeist, <span>Med30</span><sup><span>zg</span></sup></em>"
++ "<p>129S4/SvJae-Fgfr2tm5.1Sor, Fgfr2&lt;PG&gt;</p>"
++ "This strain was formerly available as <a href..."
+
+Exploring further...
+
++ split records into those with and without html tags
+	+ illegal vs. legal html tags
+	+ <i> vs. <em>
+	+ &
++ split into CSD...
++ leading and trailing spaces
++ trailing commas or comma-space
++ legal and illegal characters: ^ *
++ very long descriptions
++ hard <CR>
++ KOMP label, usually with CDS
+
+
+Names like CSD40482 appear in many records. Are these published names because
+they don't come up in a google search.
+
+Dead records you can get from API but not from website. This happens when
+sds_status is N/A. There are 655 at this point.
+
++ "Best Strain Ever, BSE" 37127 37084
++ "., ." 37630 36970 36971
++ "MY Test Strain, Test Strain" 37060 37083
++ "test, test" 37364 37363 37056
++ "1, 1" 36824 36817 36816 36747
