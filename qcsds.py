@@ -104,15 +104,13 @@ def explore(arg):
 
 def find(arg):
 	for data in read_all_sds(arg.data, arg.test):
-		ok = True
+		found = True
 		for query in arg.query:
 			tag, val = query.split(':')
 			if data[tag] != val:
-				ok = False
+				found = False
 				break
-		if ok: print(data['mmrrc_id']) 
-			
-		#if data['sds_status'] == 'N/A': print(data['mmrrc_id'])
+		if found: print(data['mmrrc_id'])
 
 def validate(arg):
 	for data in read_all_sds(arg.data, arg.test):
@@ -156,18 +154,17 @@ parse_explore.set_defaults(func=explore)
 
 # find sub-command
 parse_find = subparsers.add_parser('find',
-	help='find specific records as tag:value with implicit AND between queries')
+	help='find records as tag:value with implicit AND between queries')
 parse_find.add_argument('query', nargs='*', help='tag:value')
 parse_find.add_argument('--test', action='store_true')
 parse_find.set_defaults(func=find)
-
 
 # validate sub-command
 parse_val = subparsers.add_parser('validate', help='perform some QC checks')
 parse_val.add_argument('--test', action='store_true')
 parse_val.set_defaults(func=validate)
 
-# fix sub-commands (planning for several
+# fix sub-commands (planning for several)
 parse_fix1 = subparsers.add_parser('fix1', help='repair #1')
 parse_fix1.add_argument('--test', action='store_true')
 parse_fix1.set_defaults(func=fix1)
