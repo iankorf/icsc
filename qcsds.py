@@ -122,6 +122,21 @@ def fix1(arg):
 def fix2(arg):
 	pass
 
+def custom1(arg):
+	avail = {}
+	with open('availability.tsv') as fp:
+		for line in fp:
+			f = line.split()
+			if   len(f) == 1: avail[f[0]] = '?'
+			elif len(f) == 2: avail[f[0]] = f[1]
+			else: avail[f[0]] = ' '.join(f[1:])
+	
+	print('mmrrc_id', 'availability', 'sds_status', 'public_display', sep=',')
+	for data in read_all_sds(arg.data, arg.test):
+		mid = data['mmrrc_id']
+		if mid not in avail: avail[mid] = 'missing'
+		print(avail[mid], data['sds_status'], data['public_display'])
+
 # CLI top-level
 parser = argparse.ArgumentParser(description='automating SDS stuff')
 parser.add_argument('data', help='path to sds data directory')
@@ -172,6 +187,11 @@ parse_fix1.set_defaults(func=fix1)
 parse_fix2 = subparsers.add_parser('fix2', help='repair #2')
 parse_fix2.add_argument('--test', action='store_true')
 parse_fix2.set_defaults(func=fix2)
+
+# custom scripts
+parse_c1 = subparsers.add_parser('custom1', help='reese request 1')
+parse_c1.add_argument('--test', action='store_true')
+parse_c1.set_defaults(func=custom1)
 
 # sub-command checkpoint
 try:
