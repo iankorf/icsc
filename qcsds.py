@@ -114,7 +114,7 @@ def find(arg):
 
 def validate(arg):
 	for data in read_all_sds(arg.data, arg.test):
-		if data['sds_status'] == 'N/A': print(data['mmrrc_id'])
+		if 'species' in data: print(data['species'])
 
 def fix1(arg):
 	pass
@@ -203,3 +203,5 @@ except:
 # Run subcommand
 arg.func(arg)
 sys.exit(0)
+
+

@@ -1,0 +1,2598 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Submission",
+    "description": "MMRRC Submission",
+    "type": "object",
+    "definitions": {
+        "contactType": {
+            "properties": {
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "institution": {
+                    "type": "string"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "postal_address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state_province": {
+                    "type": "string"
+                },
+                "postal_code": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "enum": [
+                        "Dr.",
+                        "Mr.",
+                        "Mrs.",
+                        "Ms.",
+                        "Prof."
+                    ]
+                },
+                "suffix": {
+                    "enum": [
+                        "Ph.D.",
+                        "M.D.",
+                        "D.V.M.",
+                        "D.D.S.",
+                        "M.D., Ph.D.",
+                        "D.V.M., Ph.D.",
+                        "D.D.S., Ph.D.",
+                        "M.D., D.V.M.",
+                        "M.D., D.V.M., Ph.D.",
+                        "N/A"
+                    ]
+                }
+            }
+        }
+    },
+    "properties": {
+        "donor_info": {
+            "properties": {
+                "strain_contacts": {
+                    "properties": {
+                        "donor_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "codonor_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "correspondence_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "colony_manager_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "tech_transfer_official_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "external_resource_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "reviewer_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "transfer_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "submitter_contact": {
+                            "$ref": "#/definitions/contactType"
+                        },
+                        "commercial_license_contact": {
+                            "$ref": "#/definitions/contactType"
+                        }
+                    }
+                }
+            }
+        },
+        "mta_restrictions": {
+            "enum": [
+                "Non-Profit Only<sup>1</sup>",
+                "CreLox",
+                "OncoMouse",
+                "GFP",
+                "pronuclear injection",
+                "Patent: #6,143,566",
+                "Patent Pending",
+                "TET-System",
+                "Deltagen Agreement",
+                "Non-Profit Only<sup>2</sup>",
+                "BAC modification",
+                "<b>Uncertain</b>",
+                "flp/frt",
+                "MMRRC User MTA",
+                "Legal Hold",
+                "Gene Trap",
+                "MC1-Neo cassette",
+                "Dupont",
+                "AB1 ES cell, SNL feeder, positive-negative selection",
+                "Sanger Institute Gene Trap COU",
+                "gene targeting, pmc1 neo cassette same strain DNA for construct",
+                "UNC holds patents on the original strains",
+                "Patent # 6245, 965B1 issued 6/12/01; Patent # 6589505 issued 7/8/2003",
+                "patent application entitled 'Compositions & Methods Related to Serpins' pending",
+                "The original gamma 3 -deficient mouse line was patented.",
+                "The nucleosomal histone peptide epitope recognized by the TCR",
+                "US Patent 6,077,667",
+                "Luciferace",
+                "MMRRC-COU",
+                "Gene Trap (Edinburgh; O.K. for academic use)",
+                "Lexicon Agreement",
+                "Nitroxide Radical as a Treatment for Neurodegeneration",
+                "Dre recombinase",
+                "cloning vector (pBC1), FAT-1 gene obtained from John Browse via MTA",
+                "GCAMP2",
+                "patent on the Dre-rox recombinase system",
+                "Genentech Lexicon Agreement",
+                "Protected by Gladstone Institutes Intellectual Property",
+                "FVBN/Prp-Tet-off (prusiner lab)",
+                "FLPe",
+                "Special MTA",
+                "MMRRC Sanger EUCOMM COU",
+                "UW FP License",
+                "TALEN",
+                "CRISPR-Cas9",
+                "BaSH EUCOMM COU",
+                "KOMP MTA",
+                "KOMP2/JAX MTA",
+                "JM8 Parental MTA",
+                "JM8 Sub-line MTA",
+                "EUCOMM TM1A MTA",
+                "UCD NeuroMab COU",
+                "Commercial License Agreement",
+                "Collaborative Cross COU"
+            ]
+        },
+        "strain_data": {
+            "properties": {
+                "strain_name": {
+                    "type": "string"
+                },
+                "created_dt": {
+                    "type": "date"
+                },
+                "mgi_acc_id": {
+                    "type": "string"
+                },
+                "status": {
+                    "enum": [
+                        "Review/Scheduled",
+                        "Review/New",
+                        "Review/Priority",
+                        "Assign",
+                        "Record",
+                        "Provisionally Accepted",
+                        "Deferred",
+                        "Accepted",
+                        "Referred",
+                        "Declined",
+                        "Withdrawn",
+                        "Extinct",
+                        "Rescinded",
+                        "Erroneous Entry"
+                    ]
+                },
+                "submission_type": {
+                    "enum": [
+                        "Type-1",
+                        "Type-2/KOMP 60",
+                        "Type-2/MMRRC",
+                        "Type-2/NIA",
+                        "Type-2/NIAID",
+                        "Type-2/NICHD",
+                        "Type-2/NIDCD",
+                        "Type-2/NIDCR",
+                        "Type-2/NIDDK",
+                        "Type-2/NINDS",
+                        "Type-3",
+                        "Type-3/BP/AI",
+                        "Type-3/NIEHS",
+                        "Type-3/NINDS",
+                        "Type-2",
+                        "Type-2/NIEHS"
+                    ]
+                },
+                "source_collection": {
+                    "enum": [
+                        "BaSH EUCOMM",
+                        "BayGenomics/NHLBI",
+                        "Beta Cell Biology Consortium",
+                        "Beutler Mutagenetix",
+                        "CMGCC/NIEHS",
+                        "Collaborative Cross",
+                        "Collaborative Cross iPS Cell Lines",
+                        "Consortium Functional Glycomics",
+                        "CvDC/B2B",
+                        "Deltagen",
+                        "Deltagen/Lexicon",
+                        "ENCODE",
+                        "Genentech",
+                        "GENSAT/NINDS",
+                        "Human Element Enhancers",
+                        "IDG",
+                        "Keck miRNA Knockout Lines",
+                        "KOMP",
+                        "Lexicon",
+                        "Mammalian Pigmentation",
+                        "McManus miRKO Mice",
+                        "Mullen",
+                        "Mutagenesis for Dev. Defects",
+                        "Nagy Basic ES Cell Lines",
+                        "Neuroscience Blueprint cre/NIH",
+                        "NHMRC Australian PhenomeBank",
+                        "Overbeek Lentiviral Transgenic",
+                        "Peromyscus Mice",
+                        "Pleiades Promoter Project",
+                        "Pleiades Promoter/CanEuCre",
+                        "Precision Genetically-Humanized Models",
+                        "Sanger EUCOMM Collection",
+                        "Sanger Inst. Gene Trap Res.",
+                        "Sanger miRNA Knockout Lines",
+                        "Soriano Gene Trap Lines",
+                        "UC Davis NeuroMab Hybridomas"
+                    ],
+                    "type": "string"
+                },
+                "accepted_dt": {
+                    "type": "date"
+                },
+                "delayed_release_dt": {
+                    "type": "date"
+                },
+                "strain_type_id": {
+                    "enum": [
+                        "Inbred",
+                        "Recombinant Inbred",
+                        "Wild-derived Inbred",
+                        "Segregating Inbred",
+                        "Non-segregating Inbred",
+                        "Congenic",
+                        "Recombinant Congenic",
+                        "Mutant Congenic",
+                        "Coisogenic",
+                        "Consomic",
+                        "Non-inbred Stock",
+                        "Unclassified",
+                        "Wildtype Littermate Control",
+                        "Mutant Strain",
+                        "Mutant Stock"
+                    ]
+                },
+                "delayed_release_requested": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "publication_provided": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "nomen_sanctioned": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "is_di_protocol_onfile": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "is_profile_onfile": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "originated_on": {
+                    "enum": [
+                        "129",
+                        "129P1/ReJ",
+                        "129P2/OlaHsd",
+                        "129P3/J",
+                        "129S1/SvImJ",
+                        "129S2/SvHsd",
+                        "129S6/SvEvTac",
+                        "129X1/SvJ",
+                        "BALB/c",
+                        "BALB/cAnNHsd",
+                        "BALB/cAnNTac",
+                        "BALB/cJ",
+                        "C3H",
+                        "C3H/HeJ",
+                        "C3H/HeOuJ",
+                        "C3H/HeNHsd",
+                        "C3H/HeNTac-MTV",
+                        "C3HeB/FeJ",
+                        "C57BL/6",
+                        "C57BL/6NHsd",
+                        "C57BL/6J",
+                        "C57BL/6NTac",
+                        "(C57BL/6J x SJL/J) F2",
+                        "FVB/N",
+                        "FVB/NHsd",
+                        "FVB/NJ",
+                        "FVB/NTac",
+                        "129S4/SvJae",
+                        "129SvJ/CF1",
+                        "CD1, Charles River",
+                        "C57BL/6 x 129",
+                        "B6;129",
+                        "129/SvEv",
+                        "129Sv/BDF/FVB",
+                        "JULm",
+                        "129SV X C57BL/6",
+                        "129/Ola",
+                        "BL6;129SvJ",
+                        "B6.129S2/SvPas",
+                        "C.129S2(B6)",
+                        "Wildtype litter mate control",
+                        "B6.129S4",
+                        "B6D2F1",
+                        "STOCK",
+                        "B6SJL hybrid",
+                        "(C57BL/6J x CBA/J)F2",
+                        "B6.129S7",
+                        "129S",
+                        "B6.C3",
+                        "B6;D2",
+                        "B6/129",
+                        "(BALB/C x SJL/J)F1",
+                        "(C57BL/6 x C3H)F1",
+                        "C57BL/6J x 129/SvJ",
+                        "C57BL/6J x CBA/J",
+                        "C57BL/6J x 129",
+                        "DBA/2J",
+                        "B6C3Fe-a/a Hox13&lt;Hd&gt;",
+                        "FVB;129",
+                        "C3;B6",
+                        "C3B6F2/J",
+                        "C3B6F1/J",
+                        "B6;129P2",
+                        "129 x C57BL/6 hybrid",
+                        "B6.129",
+                        "JU/CtLm",
+                        "C57BL",
+                        "B6X129",
+                        "BX129",
+                        "A",
+                        "A/J",
+                        "B6;129S2",
+                        "(BALB/cJ x C57BL/6J)F1",
+                        "B6;129S",
+                        "B6;129S6",
+                        "B6.129S6",
+                        "129/Rl ",
+                        "C57BL/6NCrlBR",
+                        "C.A",
+                        "C3H x Swiss stock",
+                        "B6.Cg",
+                        "Not Designated",
+                        "JULm.Cg",
+                        "(101/Rl x C3H/Rl)F1",
+                        "BALB/c-Thy1.1",
+                        "(C57BL/6 x SJL)F1",
+                        "C3/B6J F2",
+                        "C3/B6J Hybrid",
+                        "NZW/OlaHsd",
+                        "NZB/OlaHsd",
+                        "C57BL/6 X DBA",
+                        "C57BL/10J",
+                        "B6;129X1",
+                        "B6.129X1",
+                        "CBA/C57BL6",
+                        "C57BL-a&lt;t&gt;",
+                        "(DBA/2 x AKR/J)F1",
+                        "(P x S)F1",
+                        "DBA",
+                        "B6.DBA",
+                        "C57BL/6J x Black Swiss",
+                        "KSB",
+                        "B6.KSB",
+                        "W9.5 ES Cells",
+                        "JU.B6",
+                        "JU.Cg",
+                        "Bruce4 ES cells",
+                        "(C3Hx101)F1",
+                        "B6D2F1/ x CBA/J ",
+                        "C57BL/Gr",
+                        "YS/WfLm",
+                        "(C3H/HeH x 101/H)F1",
+                        "(CB57BL/6 x CBA/J) F1",
+                        "B10.BR",
+                        "CB57BL/6 x 129",
+                        "(CB57BL/6 x 129) F2",
+                        "C56Bl10 containing human DR1 transgene",
+                        "D2.Cg",
+                        "C57BL/6J x (Rb(11.16)2H x Rb(16.17)32Lub)F1",
+                        "B6D2",
+                        "ICR",
+                        "B6.FVB",
+                        "BTBR.B6",
+                        "C3H/Rl",
+                        "C3.Cg",
+                        "129S6;B6",
+                        "B6;129S4",
+                        "129Sv/BDF",
+                        "B6;C3",
+                        "C57BL/6J x 129S4Jae",
+                        "129SvEv / C57BL/6Tyr c-Brd",
+                        "B6;129S7",
+                        "B6C3Fe-a/a-Mcoln3",
+                        "(C57BL/6 x C3H)F2",
+                        "NMRI",
+                        "129Svj/C57BL/6",
+                        "129Svj/C57BL/6 backcrossed into FVB",
+                        "mixed LG/J, SM/J",
+                        "Intercross of LG/J females with SM/J males",
+                        "129P2/B6",
+                        "129SV",
+                        "SJL",
+                        "CD1",
+                        "MRL/lpr",
+                        "C57BL/6-a/a",
+                        "129/C47B6",
+                        "SWR",
+                        "C57BL/6 + DBA/1J",
+                        "C57BL/6, 129, FVB",
+                        "C57BL/6, 129/Sv",
+                        "129S6 x BlackSwiss",
+                        "129S2",
+                        "B10/Pl-H2u ",
+                        "129SvJae/C57Bl/6",
+                        "C57BL/6NSlc",
+                        "129S4",
+                        "mix of 129 and B6",
+                        "129SvEv x C57BL/6",
+                        "129/SvEvBrd",
+                        "129/SvEvBrd x C57BL6/J mix",
+                        "B6.129P2",
+                        "C3.B6",
+                        "F2 C57BL/6J x SJL/J",
+                        "CB6F1 x CB6F1",
+                        "C57BL/6 x BALB/cJ",
+                        "4 way cross of C57BL/6J, AKR/J, C3H/J and DBA/2J ",
+                        "(CN1xB6)xCN1 N3 Backcross",
+                        "C57BL/6J crossed on to A/J Background",
+                        "The strain of ES cell (RRT600) is 129/ola. The strain used to mate with chimera is C57BL/6.",
+                        "C57BL/6 and FVB",
+                        "C56BL/6XC3H/HeN",
+                        "NOD.CB17-Prkdc-scid/J",
+                        "C57BL/6 x R1",
+                        "outbred CD-1",
+                        "B6;129S5",
+                        "B6.129S5",
+                        "backcrossing from C.129(B6)-Igg3tm1 N10 (IgG3 KO) onto MRLMpJ-Tnfrsf6",
+                        "MRLMpJ-Tnfrsf6",
+                        "129/SvJ x Black Swiss",
+                        "FVB",
+                        "FVB.129X1(B6)",
+                        "DD",
+                        "DDK",
+                        "R129J/C57BL/6J",
+                        "B6.129S",
+                        "129S6/C57BL/6",
+                        "C.Cg",
+                        "C3.129S6",
+                        "FVB.Cg",
+                        "FVB;129S6",
+                        "B6;SJL",
+                        "FVB;129P2",
+                        "FVB.129P2",
+                        "129/SvJaeSor",
+                        "129S4/SvJaeSor",
+                        "B6(C3)",
+                        "B6;129S1",
+                        "129(B6)",
+                        "B6(SJL)",
+                        "B6.129S1",
+                        "BTNTTF.129S6(B6)",
+                        "BTNTTF.129S6",
+                        "BTNTTF;129S6",
+                        "Mix of CB17, 129P2, BALB/c",
+                        "CB17.129P2(C)",
+                        "Mix of CB17. 129P2, BALB/cAnNH",
+                        "Mix of CB17, 129P2, BALB/cAnNH",
+                        "B6.129P2(D2)",
+                        "B6;129S6(D2)",
+                        "129X1/SvJ x 129S1/Sv",
+                        "A.129P2(B6)",
+                        "Derived from interbreeding  A, AK, BALB/c, C3H, C57BL, DBA/2, Is/Br, and RIII",
+                        "CBA.129S(B6)",
+                        "C57BL/Ka",
+                        "C.129S4(B6)",
+                        "C57BL/6N",
+                        "C.129S6(B6)",
+                        "FVB.A",
+                        "C57BL/Fa",
+                        "NFR.B",
+                        "NFR/N",
+                        "B6CBAF1/J",
+                        "B6.129S1(D2)",
+                        "C.129P2(B6)",
+                        "C.129S4",
+                        "C;129S6",
+                        "B6.129S2",
+                        "D2.SJL(D2)",
+                        "D2.SJL(B6)",
+                        "B6.SJL",
+                        "FVB.129S(B6)",
+                        "HS/Ibg",
+                        "FVB.129X1",
+                        "MRL/Mp",
+                        "C3N.129P2(B6)",
+                        "MRL/Mp.Cg",
+                        "CB6F1",
+                        "B6(C)",
+                        "B6SJLF1",
+                        "C57BL/6Apb",
+                        "B10;B6",
+                        "129S5/SvEvBrd",
+                        "C.FVB",
+                        "B6.129P2(FVB)",
+                        "B6JBom;129S5",
+                        "B6JBom.129S5",
+                        "129P2",
+                        "129S7/SvEvBrd",
+                        "129S2/SvPas",
+                        "(129X1/SvJ x 129S1/Sv)F1",
+                        "129S/SvEv",
+                        "BTNTTF",
+                        "CB17",
+                        "DBA/2",
+                        "CBA/Ca",
+                        "(DBA x C57BL/6)F1",
+                        "mix of 129P2, C57BL/6 and SJL",
+                        "C57BL/10",
+                        "(C57BL/6J x DBA/2J)F1 x CBA/J",
+                        "129S1/Sv-<i>Oca2<sup>+</sup> Tyr<sup>+</sup> Kitl<sup>+</sup></i>",
+                        "B6;FVB",
+                        "C57BL/6Crl",
+                        "mix of C57BL/6, 129, SJL",
+                        "multiple",
+                        "129S5, B6(Cg)-Tyr<sup>c-2J</sup>",
+                        "mix of 129X1, C57BL/6 and Black Swiss",
+                        "mix of 129, C57BL/6, FVB",
+                        "129P2/OlaHsd-<i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6/J-<i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6129F1-<i>A<sup>w</sup></i>/<i>A<sup>w-J</sup></i> <i>Gt(ROSA)26Sor<sup>tm1Sor/+</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6129F1-<i>Gt(ROSA)26Sor<sup>+/+</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6129F1-<i>Gt(ROSA)26Sor<sup>tm1Sor/+</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>",
+                        "MRL/MpJ-Faslpr/J",
+                        "MK/ReJ",
+                        "129S/Sv",
+                        "(C57BL/6 X SJL)F2",
+                        "C3H/HeSnJ",
+                        "FVB/N-Crl:CD1(ICR)",
+                        "C57BL/6J female X C3H/HeJ male zygote",
+                        "(C57BL/6J female X C3H/HeJ male) zygote",
+                        "Black Swiss",
+                        "(C57BL/6 x SJL)F2",
+                        "(CBA/C57BL/6)F1 x (C3H/C57BL/6)F1 zygote",
+                        "129S6/SvEv",
+                        "(C57BL/6 x 129S/SvEv)F1",
+                        "(129S6/SvEvTac x C57BL/6NCrl)F1",
+                        "129S2/SvPas * C57BL/6",
+                        "129S6/SvEvTac * C57BL/6",
+                        "129S6/SvEvTac * C57BL/6NCrl",
+                        "129S4/SvJae * C57BL/6J",
+                        "129S7/SvEvBrd * C57BL/6 * BALB/cJ",
+                        "129S6/SvEvTac * Black Swiss",
+                        "129S6/SvEvTac * C57BL/6J",
+                        "129P2/OlaHsd * C57BL/6",
+                        "C57BL/6 * CBA * C3H",
+                        "C57BL/6JStdAnu",
+                        "C57BL/6JAnu",
+                        "CBA/CaJAnu",
+                        "C57BL/6JStdAnu * CBA/CaJ",
+                        "C57BL/6 * B10.BR",
+                        "B6SJLF1/J",
+                        "129X1/SvJ * 129S1/Sv * C57BL/6",
+                        "B6.Cg-Thy1<sup>a</sup>",
+                        "129P2/OlaHsd * FVB * C57BL/6",
+                        "C57BL/6J-Kit<W-v>",
+                        "129S/SvEv * 129S4/SvJaeSor * Black Swiss * NSF/N",
+                        "C57BL/6J * CBA/J",
+                        "129P2/OlaHsd * C57BL/6J",
+                        "129S6/SvEvTac * C57BL/6J * Black Swiss",
+                        "129S/SvEv * C57BL/6J * DBA * Black Swiss * BALB/c * NSF/N",
+                        "DDY/JclSidSeyFrkJ",
+                        "DDY/JclSidSeyFrkJ * C57BL/6J",
+                        "JE/LeJ",
+                        "JE/LeJ * 129S6/SvEvTac",
+                        "129X1/SvJ * C57BL/6 * CD1",
+                        "129S6/SvEvTac * C57BL/6 * CD1",
+                        "(129X1/SvJ x 129S1/Sv)F1-Kitl<sup>+</sup>",
+                        "C57BL/6ByJ",
+                        "C57BL/6JStdAnu * C57BL/10.Cg-H2<k>",
+                        "129S/SvEv * C57BL/6",
+                        "129S7/SvEvBrd-Hprt<b-m2>",
+                        "FVB * C57BL/6J",
+                        "129S7/SvEvBrd-Hprt<b-m2> * C57BL/6",
+                        "129X1/SvJ * Black Swiss * C57BL/6",
+                        "129X1/SvJ * Black Swiss * BALB/c",
+                        "C57B?/6J * C3H",
+                        "C57BL/6J * C3H",
+                        "B6CBAF2J",
+                        "129S/SvEv * B6CBAF2J",
+                        "129 * C57BL/6J",
+                        "FVB * C57BL/6 * 129 * Swiss",
+                        "B6.FVB(Cg)",
+                        "129S1/Sv",
+                        "129S * BALB/c",
+                        "129X1/SvJ * BALB/cJ",
+                        "129X1/SvJ * C57BL/6 * BALB/cJ",
+                        "C57BL/6 * BALB/c",
+                        "C57BL/6 * SJL/J * FVB/N",
+                        "FVB/N * Crl:CD1(ICR)",
+                        "FVB/N * Swiss Webster * Crl:CD1(ICR)",
+                        "FVB * C57BL/6 * 129 * Crl:CD1(ICR)",
+                        "FVB/N * Swiss Webster * C57BL/6",
+                        "129/Sv",
+                        "129/Sv * C57BL/6 * FVB/NJ",
+                        "C57BL/6 * SJL",
+                        "129X1/SvJ * C57BL/6J",
+                        "129S/Sv * C57BL/6",
+                        "Hsd:ICR",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * C57BL/6",
+                        "129S5/SvEvBrd * C57BL/6j",
+                        "129S/Sv-Tyr<sup>+</sup>P<sup>+</sup>",
+                        "(C57BL/6 x BALB/c)F1",
+                        "C57BL/6 * BALB/c * FVB",
+                        "129S4/SvJae * C57BL/6NTac",
+                        "C57BL/6 * DBA2",
+                        "129X1/SVJ * Black Swiss * FVB/N",
+                        "FVB/N * Crl:CFW",
+                        "FVB/N * Tac:SW",
+                        "129/Sv * C57BL/6J * SJL",
+                        "(C57BL/6 x CBA/Ca)F1",
+                        "B6CBACa",
+                        "(B6CBACa)F1",
+                        "129/SvJ",
+                        "129/SvJ * C57BL/6",
+                        "129S6/SvEv * C57BL/6N",
+                        "C57BL6/N",
+                        "129S6/SvEv * C57BL/6N * 129S4/SvJaeSor",
+                        "129S6/SvEv * C57BL/6N * 129S4/SvJaeSor * C57BL/6J",
+                        "129X1/SvJ * 129S1/Sv * C57BL/6J",
+                        "C57BL/10ScSn-Dmd<mdx>/J ",
+                        "129X1/SvJ * 129S1/Sv",
+                        "B6.129S6(ICR)",
+                        "129S5/SvEvBrd * 129S6/SvEvTac",
+                        "C57BL/6 albino;hairless (B6.Cg-Tyrc-2J Hrhr/J)",
+                        "FVB/NJ * C57BL/6J",
+                        "FVB * C57BL/6 * 129S6",
+                        "CBA/J",
+                        "B6.CBA",
+                        "129X1/SvJ * 129S1/Sv * C57BL/6N",
+                        "(C57BL/6J x CBA/J)F1",
+                        "C57BL/6J * 129S6/SvEvTac",
+                        "129S1/Sv * 129S1/SvImJ * 129S6/SvEvTac",
+                        "FVB * 129S6/SvEvTac",
+                        "FVB/N * C57BL/6",
+                        "FVB/N * C57BL/6 * IcrTac:ICR",
+                        "C57BL/6N * C57BL/6J",
+                        "129S6/SvEvTac * C57BL/6J * SJL",
+                        "FVB/N * C57BL/6J * 129 * Swiss",
+                        "C57BL/6 * MRL/MpJ",
+                        "129P2/OlaHsd * C57BL/6 * MRL/MpJ",
+                        "129/Sv * C57BL/6 * MRL/MpJ",
+                        "C57BL/6 * 129S7/SvEvBrd",
+                        "129S6/SvEvTac * 129/SvEv",
+                        "129S6/SvEvTac * 129/SvEv * FVB/N * C57BL/6NCr",
+                        "129P2/OlaHsd * 129",
+                        "129/SvEv * 129P2/OlaHsd",
+                        "C57BL/6 * 129S5/SvEvBrd",
+                        "129S6/SvEvTac * 129P2/OlaHsd",
+                        "C57BL/6J * 129/SvEvBrd",
+                        "C57BL/6J * C3H/HeJ",
+                        "(C57BL/6J x C3H/HeJ)F1",
+                        "Not specified",
+                        "129S6 * C57BL/6",
+                        "(129S6/SvEvTac x C57BL/6J)F1",
+                        "129S6/SvEvTac * C57BL/6J * 129S4/SvJaeSor *C57BL/6",
+                        "129X1/SvJ * 129S1/Sv * 129S/SvEv * NOD/ShiLt * C57BL/6",
+                        "C57BL/6 * BALB/c * C57BL/6J",
+                        "129S6/SvEvTac * C57BL/6J * 129S4/SvJaeSor",
+                        "129X1/SvJ * C57BL/6",
+                        "C57BL/6-Tyr<c-Brd>",
+                        "129S5/SvEvBrd * C57BL/6-Tyr<c-Brd>",
+                        "129S5/SvEvBrd * C57BL/6-Tyr c-Brd * C56BL/6N",
+                        "C57BL/6 (albino), B6(Cg)-Tyrc-2J",
+                        "(C57BL/6 x 129S4/SvJae)F1",
+                        "129P2/OlaHsd * C57BL/6NCrl",
+                        "129S6/SvEvTac * C57BL/6NCrl * 129S4/SvJaeSor",
+                        "C57BL/6 * 129S4/SvJae * Balb/C",
+                        "129S4/SvJae * C57BL/6J * FVB",
+                        "C57BL/6JSfdAnu",
+                        "129S5/SvEvBrd * C57BL/6N",
+                        "C57BL/6JSfdAnu * C57BL/6J",
+                        "(C57BL/6J x 129SvEv)F1",
+                        "129S4/SvJae * C57BL/6",
+                        "B6.Cg-Thy1<sup>a</sup>/CyJ",
+                        "B6.Cg-Thy1a/CyJ",
+                        "B6.Cg-Thy1^a",
+                        "C57BL/6N * CD1 * C57BL/6J",
+                        "C57BL/6 * 129S4/SvJae",
+                        "(C57BL/6J x SJL/J)F1",
+                        "C57BL/6J * C3HeB/FeJ",
+                        "129/Sv * C57BL/6",
+                        "C57BL/6 * C3H",
+                        "C57BL/6N-A<sup>tm1Brd</sup>/a",
+                        "C57BL/6 x SJL",
+                        "129SVJae",
+                        "(C57BL/6 x CBA)F2",
+                        "C57BL/6 * CBA",
+                        "(C57BL/10Ros-p^d x C3H/HeRos)F2",
+                        "129S1/Sv * 129X1/SvJ * C57BL/6",
+                        "C57BL/6 * DBA/2 * SJL",
+                        "(129P2/OlaHsd*129S1/SvImJ)",
+                        "129P2/OlaHsd*129S1/SvImJ",
+                        "129S1/Sv-Oca2+Tyr+Kit1+ * C57BL/6 * BALB/c",
+                        "B6N.Cg-Aw-j/Aw-j Hprtb-m3/Y/Ems",
+                        "B6N;129-Egr1tm1Jmi/J",
+                        "B6N.Cg-<i>A<sup>w-j</sup>/A<sup>w-j</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>/Ems",
+                        "[129P2/OlaHsd * C57BL/6] x [(C57BL/6 x DBA/2)F1 * C57BL/6]",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * C57BL/6 * DBA",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * (C57BL/6 x DBA/2)F2 * C57BL/6",
+                        "(C57BL/6 x 129S4/SvJae)F1 * C57BL/6",
+                        "129/Sv * C57BL/6J * CD-1",
+                        "129S1/Sv-Oca+ Tyr+ Kit1+ * C57BL/6Ncr",
+                        "129S1/Sv-Oca2+ Tyr+ Kit1+ * C57BL/6Ncr",
+                        "129S/SvEv-Gpi1",
+                        "129S/SvEv-Gpi1 * C57BL/6J * Crl:CD-1(ICR)",
+                        "129S7/SvEvBrd-Hrpt<sup>+</sup>",
+                        "129S7/SvEvBrd-Hrpt<sup>+</sup> * C57BL/6 * FVB/NTac",
+                        "129S4/SvJaeSor * C57BL/6 * FVB",
+                        "129S4/SvJaeSor * C3HeB/FeJ * C57BL/6",
+                        "129S2/SvPas * 129X1/SvJ * C57BL/6",
+                        "129S7/SvEvBrd-Hprt<sup>b-m2</sup>",
+                        "FVB/NCrl",
+                        "129S7/SvEvBrd-Hrpt+ * 129S6/SvEvBrd * FVB/NTac",
+                        "129S4/SvJaeSor * FVB/N",
+                        "(C57BL/6 x DBA/2)F2",
+                        "(C57BL/6 x DBA/2)F2 * C57BL/6",
+                        "FVB * CD1",
+                        "NOD",
+                        "129 * C57BL/6 * FVB",
+                        "C57BL/6 * CD1",
+                        "129X1/SvJ * (C57BL/6 x 129S4/SvJae)F1",
+                        "129S7/SvEvBrd-Hrpt * 129S6/SvEvTac",
+                        "129S/SvEv-Gpi1 * 129S6/SvEvTac",
+                        "129S/SvEv-Gpi1 * C57BL/6",
+                        "129X1/SvJ * (C57BL/6 x 129S4/SvJae)F1 * C57BL/6 * FVB/N * 129S6/SvEvTac",
+                        "129X1/SvJ * C57BL/6 * FVB",
+                        "129 * C57BL/6JOlaHsd * FVB * BALB/cAnNHsd",
+                        "129 * C57BL/6JOlaHsd * C57BL/6 * FVB/N * BALB/cAnNHsd",
+                        "129 * C57BL/6JOlaHsd * C57Bl/6 * FVB/N * C57BL/6NHsd",
+                        "Mix of 129X1/SvJ, C57BL/6, and NIH Suisse",
+                        "129P2/OlaHsd * C57BL/6J * CD1",
+                        "129P2/OlaHsd * 129X1/SvJ",
+                        "NZW",
+                        "(DBA x C57BL/6)F1 * ICR",
+                        "129S4/SvJae * C57BL/6 * 129/Sv",
+                        "129 * C57BL/6",
+                        "(C57BL/6 x SJL)F2 * CD-1 * C57BL/6",
+                        "(C57BL/6 x SJL)F2 * CD1 * C57BL/6",
+                        "129P2/OlaHsd * C57BL/6 * 129X1/SvJ",
+                        "129P2/OlaHsd * C57BL/6J * 129X1/SvJ",
+                        "(C57BL/6 x CBA)F1",
+                        "(C57BL/6 x CBA)F1 * C57BL/6",
+                        "129S7/SvEvBrd-Hprt+ * 129S6/SvEvBrd * C57BL/6J",
+                        "129S7/SvEvBrd-Hprt+ * C57BL/6J * FVB/N",
+                        "(C57BL/6 x 129S4/SvJae)F1 * C57BL/6 * FVB/N",
+                        "C57BL/6N * C57BL/6",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * C57BL/6 * 129S6/SvEvTac",
+                        "STOCK mix of 129/Sv, C57BL/6J and SJL",
+                        "129P2/OlaHsd * C57BL/6 * C3H",
+                        "129S7/SvEvBrd-Hprt+ * C57BL/6J",
+                        "(129/Sv x C57BL/6J x SJL) * C57BL/6 * Swiss Webster",
+                        "129P2/OlaHsd * C57BL/6J * 129S6/SvEvTac",
+                        "NOD.Cg",
+                        "129S5/SvEvBrd * C57BL/6",
+                        "A/J * C57BL/6N",
+                        "C57BL/6JSfdAnu * C57BL/10Sg * C57BR/cd * NOD/ShiLt",
+                        "C57BL/6 * NOD",
+                        "Not applicable",
+                        "(C3H/HeJ x C57BL/6J)F2",
+                        "(C57BL/6 x DBA/2)F1",
+                        "C57BL/6 * 129P2/OlaHsd",
+                        "C57BL/6 * SJL * BALB/c",
+                        "C57BL/6NCrl",
+                        "C3H/HeJ * C57BL/6J",
+                        "C57BL/6N-<i>A<sup>tm1Brd</sup>/a</i>",
+                        "B6.PL-<i>Thy1a</i>/CyJ",
+                        "(C57BL/6 x 129S6/SvEvTac)F1",
+                        "C57BL/6NJ",
+                        "B6.Cg-Tyr(C-2j)/J",
+                        "(129X1 x 129S1)",
+                        "129X1 x 129S1",
+                        "B6-white and B6SJL",
+                        "Atoh1-kiNeurog1, Atoh1-cre, Atoh1f/+",
+                        "(C57BL/10 x CBA)F1",
+                        "ICR x SWR/J",
+                        "ICR/HaJ",
+                        "C57BL/6JEi",
+                        "B6/DBA",
+                        "C57BL/6NCrlAnu",
+                        "(C57BL/6J x 129X1/SvJ)F1",
+                        "(C57BL/6NTac x 129S6/SvEvTac)F1",
+                        "BALB/cCrl",
+                        "BALB/cCrlAlt",
+                        "JM8A1.N3",
+                        "BALB/cAnNCrl",
+                        "(C57BL/6J x DBA/2J)F2",
+                        "Mix of C57BL/6 and DBA/2",
+                        "C57BL/6N-A<sup>tm1Brd</sup>",
+                        "B6.129S7-Ldlrtm1Her",
+                        "BALB/cByJ",
+                        "B6N6.0 derived from C57BL/6N made at Clare Hall",
+                        "129S1/Sv-Oca2Tyr<sup>+</sup>Kitl<sup>+</sup>",
+                        "DBA/1",
+                        "C57BL/6NCr",
+                        "B6CBAF1",
+                        "(129S6/SvEvTac x C57BL/6JNcr)F1",
+                        "SB/Le",
+                        "Crl:CD1",
+                        "C57BL/6JMlcr",
+                        "HS/Npt; Heterogeneous Stock/Northport; developed by Dr. Robert J. Hitzemann at Oregon Health & Science University",
+                        "C3H/HeH",
+                        "B6N129S6F1",
+                        "129S8/SvEv-Gpi1<c>",
+                        "B6AF1",
+                        "FVB/Ove",
+                        "FVB/NOve",
+                        "B6(Cg)",
+                        "B6J.Cg",
+                        "B6J.129S6",
+                        "129S6(B6)",
+                        "B6(Cg)-Tyr<c-2J>",
+                        "129S4.Cg",
+                        "B6N.Cg",
+                        "129S1.Cg",
+                        "B6J;129S7",
+                        "129S6;129S8",
+                        "129S6;129S7",
+                        "B6J;129S8",
+                        "B6J;129S6",
+                        "B6J;129S5",
+                        "B6J;B6N",
+                        "129X1.Cg",
+                        "129S1.B6",
+                        "(C3H/HeJ x C57BL/6JLe)F2",
+                        "B10Sn.LP",
+                        "LP/J",
+                        "C57BL/10Sn",
+                        "B6By.CBy",
+                        "MOLF/EiJ",
+                        "C3H.MOLF",
+                        "B6J.B6N",
+                        "FVB.129S6",
+                        "B6J(Cg)",
+                        "B6J.B6N(Cg)",
+                        "SWR/J",
+                        "MSN",
+                        "B6J;B6N(Cg)",
+                        "B10.FVB",
+                        "FVB.B10ScSn",
+                        "(C57BL/6J x C3H/HeJ)F2",
+                        "JU.B6J",
+                        "B6J;D2",
+                        "B6JNci.129S1",
+                        "B6C3F1",
+                        "(C57BL/6N x DBA/2)F1",
+                        "B6J.FVB",
+                        "A.Cg",
+                        "B6N;B6J",
+                        "C57BL/6 x 129/Sv",
+                        "B6N(129S4)",
+                        "B6J.129X1",
+                        "C3B6F1",
+                        "129S6.Cg",
+                        "FVB.129S7",
+                        "B6C3",
+                        "FVB.129S7(Cg)",
+                        "B6J.129P2",
+                        "B6J;129X1",
+                        "B6J.129X1(Cg)",
+                        "B6J.B6N(129S4)",
+                        "B6J.129S2(Cg)",
+                        "FVB(129P2)",
+                        "FVB.129S6(129S4)",
+                        "B6J.B6N(FVB)",
+                        "B6;C3H",
+                        "B6J;129P2",
+                        "B6N.129P2(Cg)",
+                        "BTBR",
+                        "B6N.129S5",
+                        "B6J.129S5",
+                        "129S6;B6J",
+                        "B6J(129S7)",
+                        "B6N.129P2",
+                        "TINT",
+                        "B6N;SJL",
+                        "B6N.SJL",
+                        "FVBB6JF1",
+                        "B6J;FVB",
+                        "B6(129S4)",
+                        "C57BL/6J-A<w-J>/J",
+                        "B6N(Cg)",
+                        "B6N(B6J)",
+                        "FVB.129P2(Cg)",
+                        "NOD.129(Cg)",
+                        "B6J.129S7",
+                        "B6.129P2(Cg)",
+                        "B6J;129S4",
+                        "B6J.129S1",
+                        "B6J.129S6(Cg)",
+                        "B6J.129P2(Cg)",
+                        "Tac:SW",
+                        "B6N.129S6",
+                        "B6N.129S6(Cg)",
+                        "stock",
+                        "B6N.129S5(B6J)",
+                        "B6.129P2(SJL)",
+                        "NOD.129S4(B6)",
+                        "NOD.129S4(Cg)",
+                        "B6.129S1(Cg)",
+                        "CD-1",
+                        "B6N.129S7",
+                        "129S1.129S6",
+                        "B6N.FVB",
+                        "B6J.FVB(Cg)",
+                        "(129S1/SvImJ x C57BL/6J)F1",
+                        "B6J.129S7(FVB)",
+                        "BALB/c x C57BL/6",
+                        "B10.Cg",
+                        "B6J.129S7(Cg)",
+                        "B6J(129S4)",
+                        "B6J.Cg(129S1)",
+                        "B6N.B6J(SJL)",
+                        "B6J(FVB)",
+                        "NSF.129S6",
+                        "NSF.129S6(Cg)",
+                        "(129X1/SvJ x C57BL/6J)F1",
+                        "129S1.B6J",
+                        "B6N.129S4",
+                        "B6N.129S4(Cg)",
+                        "(C57BL/6J x 129S6/SvEvTac)F1",
+                        "B6J;129S2",
+                        "(C57BL/10 x CBA)F1 X CFLP",
+                        "B6.129S6(129S4)",
+                        "B6J(SJL)",
+                        "FVB.B6J(Cg)",
+                        "B6J.NOD",
+                        "C57BL/6NSlc-Tg(CAG-EGFP,Acr-EGFP)2Osb",
+                        "(129S2/SvPas x C57BL/6NSlc)F1-Tg(CAG-EGFP,Acr-EGFP)2Osb",
+                        "C.129",
+                        "AJ.B6J",
+                        "129S2.Cg",
+                        "129S6;129P2",
+                        "FVB;B6J",
+                        "B6N.B6J",
+                        "ATPase, Na+/K+ transporting, alpha 1 polypeptide; targeted mutation 2, Jerry B Lingrel",
+                        "C57BL/6 x 129/Sv)F1",
+                        "FVB.B6N(Cg)",
+                        "129S1/Sv-Oca2<+> Tyr<+> Kitl<+>",
+                        "129S4/SvJaeSor "
+                    ]
+                },
+                "maintained_on": {
+                    "enum": [
+                        "129",
+                        "129P1/ReJ",
+                        "129P2/OlaHsd",
+                        "129P3/J",
+                        "129S1/SvImJ",
+                        "129S2/SvHsd",
+                        "129S6/SvEvTac",
+                        "129X1/SvJ",
+                        "BALB/c",
+                        "BALB/cAnNHsd",
+                        "BALB/cAnNTac",
+                        "BALB/cJ",
+                        "C3H",
+                        "C3H/HeJ",
+                        "C3H/HeOuJ",
+                        "C3H/HeNHsd",
+                        "C3H/HeNTac-MTV",
+                        "C3HeB/FeJ",
+                        "C57BL/6",
+                        "C57BL/6NHsd",
+                        "C57BL/6J",
+                        "C57BL/6NTac",
+                        "(C57BL/6J x SJL/J) F2",
+                        "FVB/N",
+                        "FVB/NHsd",
+                        "FVB/NJ",
+                        "FVB/NTac",
+                        "129S4/SvJae",
+                        "129SvJ/CF1",
+                        "CD1, Charles River",
+                        "C57BL/6 x 129",
+                        "B6;129",
+                        "129/SvEv",
+                        "129Sv/BDF/FVB",
+                        "JULm",
+                        "129SV X C57BL/6",
+                        "129/Ola",
+                        "BL6;129SvJ",
+                        "B6.129S2/SvPas",
+                        "C.129S2(B6)",
+                        "Wildtype litter mate control",
+                        "B6.129S4",
+                        "B6D2F1",
+                        "STOCK",
+                        "B6SJL hybrid",
+                        "(C57BL/6J x CBA/J)F2",
+                        "B6.129S7",
+                        "129S",
+                        "B6.C3",
+                        "B6;D2",
+                        "B6/129",
+                        "(BALB/C x SJL/J)F1",
+                        "(C57BL/6 x C3H)F1",
+                        "C57BL/6J x 129/SvJ",
+                        "C57BL/6J x CBA/J",
+                        "C57BL/6J x 129",
+                        "DBA/2J",
+                        "B6C3Fe-a/a Hox13&lt;Hd&gt;",
+                        "FVB;129",
+                        "C3;B6",
+                        "C3B6F2/J",
+                        "C3B6F1/J",
+                        "B6;129P2",
+                        "129 x C57BL/6 hybrid",
+                        "B6.129",
+                        "JU/CtLm",
+                        "C57BL",
+                        "B6X129",
+                        "BX129",
+                        "A",
+                        "A/J",
+                        "B6;129S2",
+                        "(BALB/cJ x C57BL/6J)F1",
+                        "B6;129S",
+                        "B6;129S6",
+                        "B6.129S6",
+                        "129/Rl ",
+                        "C57BL/6NCrlBR",
+                        "C.A",
+                        "C3H x Swiss stock",
+                        "B6.Cg",
+                        "Not Designated",
+                        "JULm.Cg",
+                        "(101/Rl x C3H/Rl)F1",
+                        "BALB/c-Thy1.1",
+                        "(C57BL/6 x SJL)F1",
+                        "C3/B6J F2",
+                        "C3/B6J Hybrid",
+                        "NZW/OlaHsd",
+                        "NZB/OlaHsd",
+                        "C57BL/6 X DBA",
+                        "C57BL/10J",
+                        "B6;129X1",
+                        "B6.129X1",
+                        "CBA/C57BL6",
+                        "C57BL-a&lt;t&gt;",
+                        "(DBA/2 x AKR/J)F1",
+                        "(P x S)F1",
+                        "DBA",
+                        "B6.DBA",
+                        "C57BL/6J x Black Swiss",
+                        "KSB",
+                        "B6.KSB",
+                        "W9.5 ES Cells",
+                        "JU.B6",
+                        "JU.Cg",
+                        "Bruce4 ES cells",
+                        "(C3Hx101)F1",
+                        "B6D2F1/ x CBA/J ",
+                        "C57BL/Gr",
+                        "YS/WfLm",
+                        "(C3H/HeH x 101/H)F1",
+                        "(CB57BL/6 x CBA/J) F1",
+                        "B10.BR",
+                        "CB57BL/6 x 129",
+                        "(CB57BL/6 x 129) F2",
+                        "C56Bl10 containing human DR1 transgene",
+                        "D2.Cg",
+                        "C57BL/6J x (Rb(11.16)2H x Rb(16.17)32Lub)F1",
+                        "B6D2",
+                        "ICR",
+                        "B6.FVB",
+                        "BTBR.B6",
+                        "C3H/Rl",
+                        "C3.Cg",
+                        "129S6;B6",
+                        "B6;129S4",
+                        "129Sv/BDF",
+                        "B6;C3",
+                        "C57BL/6J x 129S4Jae",
+                        "129SvEv / C57BL/6Tyr c-Brd",
+                        "B6;129S7",
+                        "B6C3Fe-a/a-Mcoln3",
+                        "(C57BL/6 x C3H)F2",
+                        "NMRI",
+                        "129Svj/C57BL/6",
+                        "129Svj/C57BL/6 backcrossed into FVB",
+                        "mixed LG/J, SM/J",
+                        "Intercross of LG/J females with SM/J males",
+                        "129P2/B6",
+                        "129SV",
+                        "SJL",
+                        "CD1",
+                        "MRL/lpr",
+                        "C57BL/6-a/a",
+                        "129/C47B6",
+                        "SWR",
+                        "C57BL/6 + DBA/1J",
+                        "C57BL/6, 129, FVB",
+                        "C57BL/6, 129/Sv",
+                        "129S6 x BlackSwiss",
+                        "129S2",
+                        "B10/Pl-H2u ",
+                        "129SvJae/C57Bl/6",
+                        "C57BL/6NSlc",
+                        "129S4",
+                        "mix of 129 and B6",
+                        "129SvEv x C57BL/6",
+                        "129/SvEvBrd",
+                        "129/SvEvBrd x C57BL6/J mix",
+                        "B6.129P2",
+                        "C3.B6",
+                        "F2 C57BL/6J x SJL/J",
+                        "CB6F1 x CB6F1",
+                        "C57BL/6 x BALB/cJ",
+                        "4 way cross of C57BL/6J, AKR/J, C3H/J and DBA/2J ",
+                        "(CN1xB6)xCN1 N3 Backcross",
+                        "C57BL/6J crossed on to A/J Background",
+                        "The strain of ES cell (RRT600) is 129/ola. The strain used to mate with chimera is C57BL/6.",
+                        "C57BL/6 and FVB",
+                        "C56BL/6XC3H/HeN",
+                        "NOD.CB17-Prkdc-scid/J",
+                        "C57BL/6 x R1",
+                        "outbred CD-1",
+                        "B6;129S5",
+                        "B6.129S5",
+                        "backcrossing from C.129(B6)-Igg3tm1 N10 (IgG3 KO) onto MRLMpJ-Tnfrsf6",
+                        "MRLMpJ-Tnfrsf6",
+                        "129/SvJ x Black Swiss",
+                        "FVB",
+                        "FVB.129X1(B6)",
+                        "DD",
+                        "DDK",
+                        "R129J/C57BL/6J",
+                        "B6.129S",
+                        "129S6/C57BL/6",
+                        "C.Cg",
+                        "C3.129S6",
+                        "FVB.Cg",
+                        "FVB;129S6",
+                        "B6;SJL",
+                        "FVB;129P2",
+                        "FVB.129P2",
+                        "129/SvJaeSor",
+                        "129S4/SvJaeSor",
+                        "B6(C3)",
+                        "B6;129S1",
+                        "129(B6)",
+                        "B6(SJL)",
+                        "B6.129S1",
+                        "BTNTTF.129S6(B6)",
+                        "BTNTTF.129S6",
+                        "BTNTTF;129S6",
+                        "Mix of CB17, 129P2, BALB/c",
+                        "CB17.129P2(C)",
+                        "Mix of CB17. 129P2, BALB/cAnNH",
+                        "Mix of CB17, 129P2, BALB/cAnNH",
+                        "B6.129P2(D2)",
+                        "B6;129S6(D2)",
+                        "129X1/SvJ x 129S1/Sv",
+                        "A.129P2(B6)",
+                        "Derived from interbreeding  A, AK, BALB/c, C3H, C57BL, DBA/2, Is/Br, and RIII",
+                        "CBA.129S(B6)",
+                        "C57BL/Ka",
+                        "C.129S4(B6)",
+                        "C57BL/6N",
+                        "C.129S6(B6)",
+                        "FVB.A",
+                        "C57BL/Fa",
+                        "NFR.B",
+                        "NFR/N",
+                        "B6CBAF1/J",
+                        "B6.129S1(D2)",
+                        "C.129P2(B6)",
+                        "C.129S4",
+                        "C;129S6",
+                        "B6.129S2",
+                        "D2.SJL(D2)",
+                        "D2.SJL(B6)",
+                        "B6.SJL",
+                        "FVB.129S(B6)",
+                        "HS/Ibg",
+                        "FVB.129X1",
+                        "MRL/Mp",
+                        "C3N.129P2(B6)",
+                        "MRL/Mp.Cg",
+                        "CB6F1",
+                        "B6(C)",
+                        "B6SJLF1",
+                        "C57BL/6Apb",
+                        "B10;B6",
+                        "129S5/SvEvBrd",
+                        "C.FVB",
+                        "B6.129P2(FVB)",
+                        "B6JBom;129S5",
+                        "B6JBom.129S5",
+                        "129P2",
+                        "129S7/SvEvBrd",
+                        "129S2/SvPas",
+                        "(129X1/SvJ x 129S1/Sv)F1",
+                        "129S/SvEv",
+                        "BTNTTF",
+                        "CB17",
+                        "DBA/2",
+                        "CBA/Ca",
+                        "(DBA x C57BL/6)F1",
+                        "mix of 129P2, C57BL/6 and SJL",
+                        "C57BL/10",
+                        "(C57BL/6J x DBA/2J)F1 x CBA/J",
+                        "129S1/Sv-<i>Oca2<sup>+</sup> Tyr<sup>+</sup> Kitl<sup>+</sup></i>",
+                        "B6;FVB",
+                        "C57BL/6Crl",
+                        "mix of C57BL/6, 129, SJL",
+                        "multiple",
+                        "129S5, B6(Cg)-Tyr<sup>c-2J</sup>",
+                        "mix of 129X1, C57BL/6 and Black Swiss",
+                        "mix of 129, C57BL/6, FVB",
+                        "129P2/OlaHsd-<i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6/J-<i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6129F1-<i>A<sup>w</sup></i>/<i>A<sup>w-J</sup></i> <i>Gt(ROSA)26Sor<sup>tm1Sor/+</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6129F1-<i>Gt(ROSA)26Sor<sup>+/+</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>",
+                        "B6129F1-<i>Gt(ROSA)26Sor<sup>tm1Sor/+</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>",
+                        "MRL/MpJ-Faslpr/J",
+                        "MK/ReJ",
+                        "129S/Sv",
+                        "(C57BL/6 X SJL)F2",
+                        "C3H/HeSnJ",
+                        "FVB/N-Crl:CD1(ICR)",
+                        "C57BL/6J female X C3H/HeJ male zygote",
+                        "(C57BL/6J female X C3H/HeJ male) zygote",
+                        "Black Swiss",
+                        "(C57BL/6 x SJL)F2",
+                        "(CBA/C57BL/6)F1 x (C3H/C57BL/6)F1 zygote",
+                        "129S6/SvEv",
+                        "(C57BL/6 x 129S/SvEv)F1",
+                        "(129S6/SvEvTac x C57BL/6NCrl)F1",
+                        "129S2/SvPas * C57BL/6",
+                        "129S6/SvEvTac * C57BL/6",
+                        "129S6/SvEvTac * C57BL/6NCrl",
+                        "129S4/SvJae * C57BL/6J",
+                        "129S7/SvEvBrd * C57BL/6 * BALB/cJ",
+                        "129S6/SvEvTac * Black Swiss",
+                        "129S6/SvEvTac * C57BL/6J",
+                        "129P2/OlaHsd * C57BL/6",
+                        "C57BL/6 * CBA * C3H",
+                        "C57BL/6JStdAnu",
+                        "C57BL/6JAnu",
+                        "CBA/CaJAnu",
+                        "C57BL/6JStdAnu * CBA/CaJ",
+                        "C57BL/6 * B10.BR",
+                        "B6SJLF1/J",
+                        "129X1/SvJ * 129S1/Sv * C57BL/6",
+                        "B6.Cg-Thy1<sup>a</sup>",
+                        "129P2/OlaHsd * FVB * C57BL/6",
+                        "C57BL/6J-Kit<W-v>",
+                        "129S/SvEv * 129S4/SvJaeSor * Black Swiss * NSF/N",
+                        "C57BL/6J * CBA/J",
+                        "129P2/OlaHsd * C57BL/6J",
+                        "129S6/SvEvTac * C57BL/6J * Black Swiss",
+                        "129S/SvEv * C57BL/6J * DBA * Black Swiss * BALB/c * NSF/N",
+                        "DDY/JclSidSeyFrkJ",
+                        "DDY/JclSidSeyFrkJ * C57BL/6J",
+                        "JE/LeJ",
+                        "JE/LeJ * 129S6/SvEvTac",
+                        "129X1/SvJ * C57BL/6 * CD1",
+                        "129S6/SvEvTac * C57BL/6 * CD1",
+                        "(129X1/SvJ x 129S1/Sv)F1-Kitl<sup>+</sup>",
+                        "C57BL/6ByJ",
+                        "C57BL/6JStdAnu * C57BL/10.Cg-H2<k>",
+                        "129S/SvEv * C57BL/6",
+                        "129S7/SvEvBrd-Hprt<b-m2>",
+                        "FVB * C57BL/6J",
+                        "129S7/SvEvBrd-Hprt<b-m2> * C57BL/6",
+                        "129X1/SvJ * Black Swiss * C57BL/6",
+                        "129X1/SvJ * Black Swiss * BALB/c",
+                        "C57B?/6J * C3H",
+                        "C57BL/6J * C3H",
+                        "B6CBAF2J",
+                        "129S/SvEv * B6CBAF2J",
+                        "129 * C57BL/6J",
+                        "FVB * C57BL/6 * 129 * Swiss",
+                        "B6.FVB(Cg)",
+                        "129S1/Sv",
+                        "129S * BALB/c",
+                        "129X1/SvJ * BALB/cJ",
+                        "129X1/SvJ * C57BL/6 * BALB/cJ",
+                        "C57BL/6 * BALB/c",
+                        "C57BL/6 * SJL/J * FVB/N",
+                        "FVB/N * Crl:CD1(ICR)",
+                        "FVB/N * Swiss Webster * Crl:CD1(ICR)",
+                        "FVB * C57BL/6 * 129 * Crl:CD1(ICR)",
+                        "FVB/N * Swiss Webster * C57BL/6",
+                        "129/Sv",
+                        "129/Sv * C57BL/6 * FVB/NJ",
+                        "C57BL/6 * SJL",
+                        "129X1/SvJ * C57BL/6J",
+                        "129S/Sv * C57BL/6",
+                        "Hsd:ICR",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * C57BL/6",
+                        "129S5/SvEvBrd * C57BL/6j",
+                        "129S/Sv-Tyr<sup>+</sup>P<sup>+</sup>",
+                        "(C57BL/6 x BALB/c)F1",
+                        "C57BL/6 * BALB/c * FVB",
+                        "129S4/SvJae * C57BL/6NTac",
+                        "C57BL/6 * DBA2",
+                        "129X1/SVJ * Black Swiss * FVB/N",
+                        "FVB/N * Crl:CFW",
+                        "FVB/N * Tac:SW",
+                        "129/Sv * C57BL/6J * SJL",
+                        "(C57BL/6 x CBA/Ca)F1",
+                        "B6CBACa",
+                        "(B6CBACa)F1",
+                        "129/SvJ",
+                        "129/SvJ * C57BL/6",
+                        "129S6/SvEv * C57BL/6N",
+                        "C57BL6/N",
+                        "129S6/SvEv * C57BL/6N * 129S4/SvJaeSor",
+                        "129S6/SvEv * C57BL/6N * 129S4/SvJaeSor * C57BL/6J",
+                        "129X1/SvJ * 129S1/Sv * C57BL/6J",
+                        "C57BL/10ScSn-Dmd<mdx>/J ",
+                        "129X1/SvJ * 129S1/Sv",
+                        "B6.129S6(ICR)",
+                        "129S5/SvEvBrd * 129S6/SvEvTac",
+                        "C57BL/6 albino;hairless (B6.Cg-Tyrc-2J Hrhr/J)",
+                        "FVB/NJ * C57BL/6J",
+                        "FVB * C57BL/6 * 129S6",
+                        "CBA/J",
+                        "B6.CBA",
+                        "129X1/SvJ * 129S1/Sv * C57BL/6N",
+                        "(C57BL/6J x CBA/J)F1",
+                        "C57BL/6J * 129S6/SvEvTac",
+                        "129S1/Sv * 129S1/SvImJ * 129S6/SvEvTac",
+                        "FVB * 129S6/SvEvTac",
+                        "FVB/N * C57BL/6",
+                        "FVB/N * C57BL/6 * IcrTac:ICR",
+                        "C57BL/6N * C57BL/6J",
+                        "129S6/SvEvTac * C57BL/6J * SJL",
+                        "FVB/N * C57BL/6J * 129 * Swiss",
+                        "C57BL/6 * MRL/MpJ",
+                        "129P2/OlaHsd * C57BL/6 * MRL/MpJ",
+                        "129/Sv * C57BL/6 * MRL/MpJ",
+                        "C57BL/6 * 129S7/SvEvBrd",
+                        "129S6/SvEvTac * 129/SvEv",
+                        "129S6/SvEvTac * 129/SvEv * FVB/N * C57BL/6NCr",
+                        "129P2/OlaHsd * 129",
+                        "129/SvEv * 129P2/OlaHsd",
+                        "C57BL/6 * 129S5/SvEvBrd",
+                        "129S6/SvEvTac * 129P2/OlaHsd",
+                        "C57BL/6J * 129/SvEvBrd",
+                        "C57BL/6J * C3H/HeJ",
+                        "(C57BL/6J x C3H/HeJ)F1",
+                        "Not specified",
+                        "129S6 * C57BL/6",
+                        "(129S6/SvEvTac x C57BL/6J)F1",
+                        "129S6/SvEvTac * C57BL/6J * 129S4/SvJaeSor *C57BL/6",
+                        "129X1/SvJ * 129S1/Sv * 129S/SvEv * NOD/ShiLt * C57BL/6",
+                        "C57BL/6 * BALB/c * C57BL/6J",
+                        "129S6/SvEvTac * C57BL/6J * 129S4/SvJaeSor",
+                        "129X1/SvJ * C57BL/6",
+                        "C57BL/6-Tyr<c-Brd>",
+                        "129S5/SvEvBrd * C57BL/6-Tyr<c-Brd>",
+                        "129S5/SvEvBrd * C57BL/6-Tyr c-Brd * C56BL/6N",
+                        "C57BL/6 (albino), B6(Cg)-Tyrc-2J",
+                        "(C57BL/6 x 129S4/SvJae)F1",
+                        "129P2/OlaHsd * C57BL/6NCrl",
+                        "129S6/SvEvTac * C57BL/6NCrl * 129S4/SvJaeSor",
+                        "C57BL/6 * 129S4/SvJae * Balb/C",
+                        "129S4/SvJae * C57BL/6J * FVB",
+                        "C57BL/6JSfdAnu",
+                        "129S5/SvEvBrd * C57BL/6N",
+                        "C57BL/6JSfdAnu * C57BL/6J",
+                        "(C57BL/6J x 129SvEv)F1",
+                        "129S4/SvJae * C57BL/6",
+                        "B6.Cg-Thy1<sup>a</sup>/CyJ",
+                        "B6.Cg-Thy1a/CyJ",
+                        "B6.Cg-Thy1^a",
+                        "C57BL/6N * CD1 * C57BL/6J",
+                        "C57BL/6 * 129S4/SvJae",
+                        "(C57BL/6J x SJL/J)F1",
+                        "C57BL/6J * C3HeB/FeJ",
+                        "129/Sv * C57BL/6",
+                        "C57BL/6 * C3H",
+                        "C57BL/6N-A<sup>tm1Brd</sup>/a",
+                        "C57BL/6 x SJL",
+                        "129SVJae",
+                        "(C57BL/6 x CBA)F2",
+                        "C57BL/6 * CBA",
+                        "(C57BL/10Ros-p^d x C3H/HeRos)F2",
+                        "129S1/Sv * 129X1/SvJ * C57BL/6",
+                        "C57BL/6 * DBA/2 * SJL",
+                        "(129P2/OlaHsd*129S1/SvImJ)",
+                        "129P2/OlaHsd*129S1/SvImJ",
+                        "129S1/Sv-Oca2+Tyr+Kit1+ * C57BL/6 * BALB/c",
+                        "B6N.Cg-Aw-j/Aw-j Hprtb-m3/Y/Ems",
+                        "B6N;129-Egr1tm1Jmi/J",
+                        "B6N.Cg-<i>A<sup>w-j</sup>/A<sup>w-j</sup></i> <i>Hprt<sup>b-m3/Y</sup></i>/Ems",
+                        "[129P2/OlaHsd * C57BL/6] x [(C57BL/6 x DBA/2)F1 * C57BL/6]",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * C57BL/6 * DBA",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * (C57BL/6 x DBA/2)F2 * C57BL/6",
+                        "(C57BL/6 x 129S4/SvJae)F1 * C57BL/6",
+                        "129/Sv * C57BL/6J * CD-1",
+                        "129S1/Sv-Oca+ Tyr+ Kit1+ * C57BL/6Ncr",
+                        "129S1/Sv-Oca2+ Tyr+ Kit1+ * C57BL/6Ncr",
+                        "129S/SvEv-Gpi1",
+                        "129S/SvEv-Gpi1 * C57BL/6J * Crl:CD-1(ICR)",
+                        "129S7/SvEvBrd-Hrpt<sup>+</sup>",
+                        "129S7/SvEvBrd-Hrpt<sup>+</sup> * C57BL/6 * FVB/NTac",
+                        "129S4/SvJaeSor * C57BL/6 * FVB",
+                        "129S4/SvJaeSor * C3HeB/FeJ * C57BL/6",
+                        "129S2/SvPas * 129X1/SvJ * C57BL/6",
+                        "129S7/SvEvBrd-Hprt<sup>b-m2</sup>",
+                        "FVB/NCrl",
+                        "129S7/SvEvBrd-Hrpt+ * 129S6/SvEvBrd * FVB/NTac",
+                        "129S4/SvJaeSor * FVB/N",
+                        "(C57BL/6 x DBA/2)F2",
+                        "(C57BL/6 x DBA/2)F2 * C57BL/6",
+                        "FVB * CD1",
+                        "NOD",
+                        "129 * C57BL/6 * FVB",
+                        "C57BL/6 * CD1",
+                        "129X1/SvJ * (C57BL/6 x 129S4/SvJae)F1",
+                        "129S7/SvEvBrd-Hrpt * 129S6/SvEvTac",
+                        "129S/SvEv-Gpi1 * 129S6/SvEvTac",
+                        "129S/SvEv-Gpi1 * C57BL/6",
+                        "129X1/SvJ * (C57BL/6 x 129S4/SvJae)F1 * C57BL/6 * FVB/N * 129S6/SvEvTac",
+                        "129X1/SvJ * C57BL/6 * FVB",
+                        "129 * C57BL/6JOlaHsd * FVB * BALB/cAnNHsd",
+                        "129 * C57BL/6JOlaHsd * C57BL/6 * FVB/N * BALB/cAnNHsd",
+                        "129 * C57BL/6JOlaHsd * C57Bl/6 * FVB/N * C57BL/6NHsd",
+                        "Mix of 129X1/SvJ, C57BL/6, and NIH Suisse",
+                        "129P2/OlaHsd * C57BL/6J * CD1",
+                        "129P2/OlaHsd * 129X1/SvJ",
+                        "NZW",
+                        "(DBA x C57BL/6)F1 * ICR",
+                        "129S4/SvJae * C57BL/6 * 129/Sv",
+                        "129 * C57BL/6",
+                        "(C57BL/6 x SJL)F2 * CD-1 * C57BL/6",
+                        "(C57BL/6 x SJL)F2 * CD1 * C57BL/6",
+                        "129P2/OlaHsd * C57BL/6 * 129X1/SvJ",
+                        "129P2/OlaHsd * C57BL/6J * 129X1/SvJ",
+                        "(C57BL/6 x CBA)F1",
+                        "(C57BL/6 x CBA)F1 * C57BL/6",
+                        "129S7/SvEvBrd-Hprt+ * 129S6/SvEvBrd * C57BL/6J",
+                        "129S7/SvEvBrd-Hprt+ * C57BL/6J * FVB/N",
+                        "(C57BL/6 x 129S4/SvJae)F1 * C57BL/6 * FVB/N",
+                        "C57BL/6N * C57BL/6",
+                        "129S1/Sv-Oca2+ Tyr+ Kitl+ * C57BL/6 * 129S6/SvEvTac",
+                        "STOCK mix of 129/Sv, C57BL/6J and SJL",
+                        "129P2/OlaHsd * C57BL/6 * C3H",
+                        "129S7/SvEvBrd-Hprt+ * C57BL/6J",
+                        "(129/Sv x C57BL/6J x SJL) * C57BL/6 * Swiss Webster",
+                        "129P2/OlaHsd * C57BL/6J * 129S6/SvEvTac",
+                        "NOD.Cg",
+                        "129S5/SvEvBrd * C57BL/6",
+                        "A/J * C57BL/6N",
+                        "C57BL/6JSfdAnu * C57BL/10Sg * C57BR/cd * NOD/ShiLt",
+                        "C57BL/6 * NOD",
+                        "Not applicable",
+                        "(C3H/HeJ x C57BL/6J)F2",
+                        "(C57BL/6 x DBA/2)F1",
+                        "C57BL/6 * 129P2/OlaHsd",
+                        "C57BL/6 * SJL * BALB/c",
+                        "C57BL/6NCrl",
+                        "C3H/HeJ * C57BL/6J",
+                        "C57BL/6N-<i>A<sup>tm1Brd</sup>/a</i>",
+                        "B6.PL-<i>Thy1a</i>/CyJ",
+                        "(C57BL/6 x 129S6/SvEvTac)F1",
+                        "C57BL/6NJ",
+                        "B6.Cg-Tyr(C-2j)/J",
+                        "(129X1 x 129S1)",
+                        "129X1 x 129S1",
+                        "B6-white and B6SJL",
+                        "Atoh1-kiNeurog1, Atoh1-cre, Atoh1f/+",
+                        "(C57BL/10 x CBA)F1",
+                        "ICR x SWR/J",
+                        "ICR/HaJ",
+                        "C57BL/6JEi",
+                        "B6/DBA",
+                        "C57BL/6NCrlAnu",
+                        "(C57BL/6J x 129X1/SvJ)F1",
+                        "(C57BL/6NTac x 129S6/SvEvTac)F1",
+                        "BALB/cCrl",
+                        "BALB/cCrlAlt",
+                        "JM8A1.N3",
+                        "BALB/cAnNCrl",
+                        "(C57BL/6J x DBA/2J)F2",
+                        "Mix of C57BL/6 and DBA/2",
+                        "C57BL/6N-A<sup>tm1Brd</sup>",
+                        "B6.129S7-Ldlrtm1Her",
+                        "BALB/cByJ",
+                        "B6N6.0 derived from C57BL/6N made at Clare Hall",
+                        "129S1/Sv-Oca2Tyr<sup>+</sup>Kitl<sup>+</sup>",
+                        "DBA/1",
+                        "C57BL/6NCr",
+                        "B6CBAF1",
+                        "(129S6/SvEvTac x C57BL/6JNcr)F1",
+                        "SB/Le",
+                        "Crl:CD1",
+                        "C57BL/6JMlcr",
+                        "HS/Npt; Heterogeneous Stock/Northport; developed by Dr. Robert J. Hitzemann at Oregon Health & Science University",
+                        "C3H/HeH",
+                        "B6N129S6F1",
+                        "129S8/SvEv-Gpi1<c>",
+                        "B6AF1",
+                        "FVB/Ove",
+                        "FVB/NOve",
+                        "B6(Cg)",
+                        "B6J.Cg",
+                        "B6J.129S6",
+                        "129S6(B6)",
+                        "B6(Cg)-Tyr<c-2J>",
+                        "129S4.Cg",
+                        "B6N.Cg",
+                        "129S1.Cg",
+                        "B6J;129S7",
+                        "129S6;129S8",
+                        "129S6;129S7",
+                        "B6J;129S8",
+                        "B6J;129S6",
+                        "B6J;129S5",
+                        "B6J;B6N",
+                        "129X1.Cg",
+                        "129S1.B6",
+                        "(C3H/HeJ x C57BL/6JLe)F2",
+                        "B10Sn.LP",
+                        "LP/J",
+                        "C57BL/10Sn",
+                        "B6By.CBy",
+                        "MOLF/EiJ",
+                        "C3H.MOLF",
+                        "B6J.B6N",
+                        "FVB.129S6",
+                        "B6J(Cg)",
+                        "B6J.B6N(Cg)",
+                        "SWR/J",
+                        "MSN",
+                        "B6J;B6N(Cg)",
+                        "B10.FVB",
+                        "FVB.B10ScSn",
+                        "(C57BL/6J x C3H/HeJ)F2",
+                        "JU.B6J",
+                        "B6J;D2",
+                        "B6JNci.129S1",
+                        "B6C3F1",
+                        "(C57BL/6N x DBA/2)F1",
+                        "B6J.FVB",
+                        "A.Cg",
+                        "B6N;B6J",
+                        "C57BL/6 x 129/Sv",
+                        "B6N(129S4)",
+                        "B6J.129X1",
+                        "C3B6F1",
+                        "129S6.Cg",
+                        "FVB.129S7",
+                        "B6C3",
+                        "FVB.129S7(Cg)",
+                        "B6J.129P2",
+                        "B6J;129X1",
+                        "B6J.129X1(Cg)",
+                        "B6J.B6N(129S4)",
+                        "B6J.129S2(Cg)",
+                        "FVB(129P2)",
+                        "FVB.129S6(129S4)",
+                        "B6J.B6N(FVB)",
+                        "B6;C3H",
+                        "B6J;129P2",
+                        "B6N.129P2(Cg)",
+                        "BTBR",
+                        "B6N.129S5",
+                        "B6J.129S5",
+                        "129S6;B6J",
+                        "B6J(129S7)",
+                        "B6N.129P2",
+                        "TINT",
+                        "B6N;SJL",
+                        "B6N.SJL",
+                        "FVBB6JF1",
+                        "B6J;FVB",
+                        "B6(129S4)",
+                        "C57BL/6J-A<w-J>/J",
+                        "B6N(Cg)",
+                        "B6N(B6J)",
+                        "FVB.129P2(Cg)",
+                        "NOD.129(Cg)",
+                        "B6J.129S7",
+                        "B6.129P2(Cg)",
+                        "B6J;129S4",
+                        "B6J.129S1",
+                        "B6J.129S6(Cg)",
+                        "B6J.129P2(Cg)",
+                        "Tac:SW",
+                        "B6N.129S6",
+                        "B6N.129S6(Cg)",
+                        "stock",
+                        "B6N.129S5(B6J)",
+                        "B6.129P2(SJL)",
+                        "NOD.129S4(B6)",
+                        "NOD.129S4(Cg)",
+                        "B6.129S1(Cg)",
+                        "CD-1",
+                        "B6N.129S7",
+                        "129S1.129S6",
+                        "B6N.FVB",
+                        "B6J.FVB(Cg)",
+                        "(129S1/SvImJ x C57BL/6J)F1",
+                        "B6J.129S7(FVB)",
+                        "BALB/c x C57BL/6",
+                        "B10.Cg",
+                        "B6J.129S7(Cg)",
+                        "B6J(129S4)",
+                        "B6J.Cg(129S1)",
+                        "B6N.B6J(SJL)",
+                        "B6J(FVB)",
+                        "NSF.129S6",
+                        "NSF.129S6(Cg)",
+                        "(129X1/SvJ x C57BL/6J)F1",
+                        "129S1.B6J",
+                        "B6N.129S4",
+                        "B6N.129S4(Cg)",
+                        "(C57BL/6J x 129S6/SvEvTac)F1",
+                        "B6J;129S2",
+                        "(C57BL/10 x CBA)F1 X CFLP",
+                        "B6.129S6(129S4)",
+                        "B6J(SJL)",
+                        "FVB.B6J(Cg)",
+                        "B6J.NOD",
+                        "C57BL/6NSlc-Tg(CAG-EGFP,Acr-EGFP)2Osb",
+                        "(129S2/SvPas x C57BL/6NSlc)F1-Tg(CAG-EGFP,Acr-EGFP)2Osb",
+                        "C.129",
+                        "AJ.B6J",
+                        "129S2.Cg",
+                        "129S6;129P2",
+                        "FVB;B6J",
+                        "B6N.B6J",
+                        "ATPase, Na+/K+ transporting, alpha 1 polypeptide; targeted mutation 2, Jerry B Lingrel",
+                        "C57BL/6 x 129/Sv)F1",
+                        "FVB.B6N(Cg)",
+                        "129S1/Sv-Oca2<+> Tyr<+> Kitl<+>",
+                        "129S4/SvJaeSor "
+                    ]
+                },
+                "mta_rcvd_dt": {
+                    "type": "string"
+                },
+                "mta_release_category": {
+                    "type": "string"
+                },
+                "mta_version": {
+                    "type": "string"
+                },
+                "ilar_lab_code": {
+                    "type": "string"
+                },
+                "other_notes": {
+                    "type": "string"
+                },
+                "initial_maintenance_level": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "strain_name",
+                "status",
+                "submission_type",
+                "accepted_dt",
+                "strain_type_id",
+                "delayed_release_requested",
+                "publication_provided",
+                "originated_on",
+                "maintained_on",
+                "mta_rcvd_dt"
+            ]
+        },
+        "strain_detail": {
+            "properties": {
+                "published_name": {
+                    "type": "string"
+                },
+                "donor_institution": {
+                    "type": "string"
+                },
+                "is_transgenic": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "is_sexlinked": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "homozgosity_yn": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "genetic_alteration": {
+                    "type": "string"
+                },
+                "phenotype": {
+                    "type": "string"
+                },
+                "genotyping": {
+                    "type": "string"
+                },
+                "reference": {
+                    "type": "string"
+                },
+                "strain_development": {
+                    "type": "string"
+                },
+                "current_background": {
+                    "type": "string"
+                },
+                "founder_background": {
+                    "type": "string"
+                },
+                "available_control": {
+                    "type": "string"
+                },
+                "research_applications": {
+                    "type": "string"
+                },
+                "coat_color": {
+                    "type": "string"
+                },
+                "other_appearance": {
+                    "type": "string"
+                },
+                "breeding_system": {
+                    "enum": [
+                        "Backcross",
+                        "Sib-mating",
+                        "Random intra-strain mating",
+                        "Outcross to non inbred (hybrid or outbred) mate",
+                        "Other or uncertain",
+                        "Backcross or Sib-Mating"
+                    ]
+                },
+                "breeding_schemes": {
+                    "type": "string"
+                },
+                "breeding_performance": {
+                    "enum": [
+                        "Excellent",
+                        "Good",
+                        "Poor",
+                        "Undetermined"
+                    ]
+                },
+                "f_hom_viable": {
+                    "enum": [
+                        "Yes",
+                        "No",
+                        "Reduced",
+                        "Undetermined",
+                        "Unknown",
+                        "N/A"
+                    ]
+                },
+                "m_hom_viable": {
+                    "enum": [
+                        "Yes",
+                        "No",
+                        "Reduced",
+                        "Undetermined",
+                        "Unknown",
+                        "X-linked",
+                        "N/A"
+                    ]
+                },
+                "f_hom_fertile": {
+                    "enum": [
+                        "Yes",
+                        "No",
+                        "Reduced",
+                        "Sterile",
+                        "Undetermined",
+                        "Unknown",
+                        "N/A"
+                    ]
+                },
+                "m_hom_fertile": {
+                    "enum": [
+                        "Yes",
+                        "No",
+                        "Reduced",
+                        "Sterile",
+                        "Undetermined",
+                        "Unknown",
+                        "X-linked",
+                        "N/A"
+                    ]
+                },
+                "f_het_hemi_fertile": {
+                    "enum": [
+                        "Yes",
+                        "No",
+                        "Reduced",
+                        "Sterile",
+                        "Undetermined",
+                        "Unknown",
+                        "N/A"
+                    ]
+                },
+                "m_het_hemi_fertile": {
+                    "enum": [
+                        "Yes",
+                        "No",
+                        "Reduced",
+                        "Sterile",
+                        "Undetermined",
+                        "Unknown",
+                        "N/A"
+                    ]
+                },
+                "f_age_repdec": {
+                    "type": "string"
+                },
+                "m_age_repdec": {
+                    "type": "string"
+                },
+                "ave_pups_born": {
+                    "type": "string"
+                },
+                "wean_age": {
+                    "type": "string"
+                },
+                "average_pups_weaned": {
+                    "enum": [
+                        "Less than 4",
+                        "4-6",
+                        "5-9",
+                        "10-14",
+                        "Greater than 15",
+                        "Undetermined"
+                    ]
+                },
+                "special_husbandry": {
+                    "type": "string"
+                },
+                "availability_level": {
+                    "type": "string"
+                },
+                "hide_colony_husbandry_info": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "show_repro_stat": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "sds_status": {
+                    "enum": [
+                        "In Progress",
+                        "Needs Publication",
+                        "QC",
+                        "Complete",
+                        "Needs Update",
+                        "Updated & Complete",
+                        "N/A"
+                    ]
+                },
+                "protocol_status": {
+                    "enum": [
+                        "Needs Protocol",
+                        "Donor Protocol",
+                        "Center Protocol",
+                        "Center and Donor Protocol",
+                        "Image",
+                        "Image and Protocol",
+                        "Statement",
+                        "Fix",
+                        "Phenotype"
+                    ]
+                },
+                "culture_protocol": {
+                    "type": "string"
+                },
+                "public_display": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "generation": {
+                    "type": "string"
+                },
+                "hom_viable_comment": {
+                    "type": "string"
+                },
+                "hom_fertile_comment": {
+                    "type": "string"
+                },
+                "het_hemi_fertile_comment": {
+                    "type": "string"
+                },
+                "health_status_cryo": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "published_name",
+                "is_transgenic",
+                "is_sexlinked",
+                "genetic_alteration",
+                "phenotype",
+                "reference",
+                "strain_development",
+                "current_background",
+                "available_control",
+                "coat_color",
+                "breeding_system",
+                "hide_colony_husbandry_info",
+                "show_repro_stat",
+                "sds_status",
+                "protocol_status",
+                "public_display"
+            ]
+        },
+        "locus_data": {
+            "properties": {
+                "items": {
+                    "properties": {
+                        "symbol": {
+                            "type": "string"
+                        },
+                        "markup_symbol": {
+                            "type": "string"
+                        },
+                        "resource_id": {
+                            "type": "string"
+                        },
+                        "mgi_acc_id": {
+                            "type": "string"
+                        },
+                        "external_acc_id": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "segment_type": {
+                            "enum": [
+                                "Gene",
+                                "Allele",
+                                "DNA Segment",
+                                "Cytogenetic Marker",
+                                "Pseudogene",
+                                "Complex/Cluster/Region",
+                                "Transgene",
+                                "Transposon",
+                                "Other Genome Feature",
+                                "Erroneous Entry",
+                                "Chromosome",
+                                "QTL",
+                                "QTL Variant",
+                                "Intergenic Region",
+                                "Regulatory Region"
+                            ]
+                        },
+                        "species": {
+                            "enum": [
+                                "Aequorea victoria (jellyfish)",
+                                "Bacteria",
+                                "Bordetella pertussis (bacterium)",
+                                "Bos taurus (cattle)",
+                                "Caenorhabditis elegans (roundworm)",
+                                "Discosoma sp. (mushroom coral)",
+                                "Drosophila melanogaster (fruit fly)",
+                                "Entacmaea quadricolor (sea anemone)",
+                                "Enterobacteria phage P1 (bacteriophage P1)",
+                                "Escherichia coli (bacterium)",
+                                "Gallus gallus (chicken)",
+                                "Homo sapiens (human)",
+                                "Influenza virus",
+                                "Multi-species",
+                                "Mus musculus (mouse)",
+                                "Photinus pyralis (firefly)",
+                                "Rabbit",
+                                "Rattus norvegicus (norway rat)",
+                                "Saccharomyces cerevisiae (yeast)",
+                                "Simian virus 40 (SV40)",
+                                "Streptococcus pyogenes (bacterium)",
+                                "Sus scrofa (pig)",
+                                "Synthetic",
+                                "Virus",
+                                "Xenopus laevis (African clawed frog)"
+                            ]
+                        },
+                        "chromosome": {
+                            "type": "string"
+                        },
+                        "locus_notes": {
+                            "type": "string"
+                        },
+                        "locus_role": {
+                            "enum": [
+                                "Target",
+                                "Transgene",
+                                "Promoter",
+                                "Modifier",
+                                "Reporter",
+                                "Enhancer",
+                                "Centomeric end point",
+                                "Telomeric end point",
+                                "Transposon",
+                                "Inducer",
+                                "Allele",
+                                "Gene",
+                                "QTL"
+                            ]
+                        },
+                        "alteration_desc": {
+                            "type": "string"
+                        },
+                        "additional_notes": {
+                            "type": "string"
+                        },
+                        "alteration_id": {
+                            "enum": [
+                                "Non-mutant",
+                                "Spontaneous Mutation",
+                                "Induced Mutation",
+                                "Chemically Induced",
+                                "Radiation Induced",
+                                "Transgenic",
+                                "Targeted Mutation",
+                                "Knockout",
+                                "Knock-In",
+                                "Gene Trap",
+                                "Conditional",
+                                "Transgenic (BAC)",
+                                "Transgenic (cre)",
+                                "FRT",
+                                "Chromosomal Aberration",
+                                "Deletion",
+                                "Duplication",
+                                "Insertion",
+                                "Inversion",
+                                "Translocation, Insertional",
+                                "Translocation, Reciprocal",
+                                "Translocation, Robertsonian",
+                                "Transposition",
+                                "Polymorphic allele",
+                                "Transgenic (random, gene disruption)",
+                                "Chromosome Substitution",
+                                "Knockout-first",
+                                "Targeted Non-Conditional",
+                                "Endonuclease-mediated",
+                                "CRISPR",
+                                "TALEN",
+                                "Targeted Mutation, Deletion"
+                            ]
+                        },
+                        "cell_line_id": {
+                            "enum": [
+                                "AB1",
+                                "AB2.1",
+                                "AK7",
+                                "CJ7",
+                                "D3",
+                                "E14",
+                                "HM-1",
+                                "J1",
+                                "R1",
+                                "RF8",
+                                "RW-4",
+                                "TC1/TC-1",
+                                "TL1/TL-1",
+                                "WW6",
+                                "W9.5/W95",
+                                "REK3",
+                                "REK2",
+                                "E14.1",
+                                "E14TG2a.4",
+                                "AB2.2",
+                                "CCE/EK.CCE",
+                                "TT2",
+                                "W4",
+                                "CGR8",
+                                "E14TG2a",
+                                "G4",
+                                "GSI-1",
+                                "Not specified",
+                                "Not applicable",
+                                "v6.5",
+                                "WD44",
+                                "Lexicon cell line",
+                                "SM1",
+                                "Bruce4",
+                                "Duffy",
+                                "81E10-40F",
+                                "JM-1",
+                                "EF1",
+                                "EC7.1",
+                                "JM8",
+                                "mEMS1204",
+                                "mEMS1218",
+                                "mEMS21",
+                                "mEMS21TG2A",
+                                "mEMS1202",
+                                "BK4",
+                                "JM8.F6",
+                                "JM8A3",
+                                "mEMS1217",
+                                "mEMS1254",
+                                "mEMS1292",
+                                "CMTI-1",
+                                "AK7.1",
+                                "JM8.N4",
+                                "Lex3.13",
+                                "CT129",
+                                "Lex-1",
+                                "CB1-4",
+                                "JMA7",
+                                "PC3",
+                                "P1",
+                                "BL/6-III",
+                                "D1",
+                                "JM8A3.N1",
+                                "C2",
+                                "mEMS4857.02",
+                                "mEMS4855.02",
+                                "LW1",
+                                "LR2.6.1",
+                                "IB10",
+                                "JM8A1.N3",
+                                "JM8A3.N1.C2",
+                                "N1",
+                                "EAP6",
+                                "R1/E",
+                                "B6-White<sup>TM</sup>",
+                                "CCE916",
+                                "iTL1",
+                                "PRX-B6T",
+                                "PB84.3",
+                                "BALB/cJ-line",
+                                "Unspecified",
+                                "VGB6",
+                                "C57Bl/6J-693",
+                                "C57BL/6N-albino",
+                                "C57BL/6N-PRX-B6N #1",
+                                "ART4.12",
+                                "PRX-B6N",
+                                "Taconic Artemis",
+                                "D2",
+                                "ICR",
+                                "E14K",
+                                "iTL BA1",
+                                "ESVJ-1182",
+                                "129Sv",
+                                "B6N6.0",
+                                "EGR-G101",
+                                "JM8 (non-A; includes feeder-independent N sublines - e.g., JM8.N4)",
+                                "JM8A lines (i.e., all heterozygous Agouti coat color lines, e.g., JM8A1.N3, JM8A3, etc.)",
+                                "JM8.N19",
+                                "Cyagen B6N",
+                                "C1",
+                                "JM8A1",
+                                "A-A02",
+                                "Ingenious Line",
+                                "CSL3",
+                                "XSV1",
+                                "CY2.4",
+                                "genOway B6",
+                                "iTL IC1",
+                                "F1H4",
+                                "A2Lox.cre mESCs",
+                                "KH2",
+                                "HGTC-8",
+                                "B6Aw-6",
+                                "MM13",
+                                "TBV2",
+                                "S1B6A",
+                                "CRISPR",
+                                "KV1",
+                                "C57BL/6-EZ (Applied Stem Cell -  Catalog # : ASE-9007)",
+                                "SCC10",
+                                "EGR-G01",
+                                "Phnx43"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "symbol",
+                        "species",
+                        "chromosome",
+                        "locus_role",
+                        "alteration_id"
+                    ]
+                }
+            }
+        },
+        "importation_data": {
+            "properties": {
+                "center_id": {
+                    "enum": [
+                        "-TBD-",
+                        "ICSC",
+                        "JAX",
+                        "MU",
+                        "T/A",
+                        "UCD",
+                        "UNC"
+                    ]
+                },
+                "assigned_dt": {
+                    "type": "date"
+                },
+                "closed_dt": {
+                    "type": "date"
+                },
+                "close_status": {
+                    "enum": [
+                        "AVD",
+                        "Erroneous Entry",
+                        "Extinct",
+                        "Reassigned",
+                        "Referred",
+                        "Rescinded",
+                        "Withdrawn",
+                        "Declined"
+                    ]
+                },
+                "mice_rcvd_dt": {
+                    "type": "date"
+                },
+                "verified_cryo_dt": {
+                    "type": "date"
+                },
+                "rearchived_date": {
+                    "type": "date"
+                },
+                "availability": {
+                    "enum": [
+                        "Breeder pairs",
+                        "Cryo-archive",
+                        "ES cell line",
+                        "Hybridoma cell line",
+                        "iPS Cell Line",
+                        "Collaborative Cross Mice",
+                        "Currently Unavailable",
+                        "Hidden"
+                    ]
+                },
+                "availability_note": {
+                    "type": "string"
+                },
+                "germplasm_received": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "estimated_avd_dt": {
+                    "type": "date"
+                },
+                "avd_dt": {
+                    "type": "date"
+                },
+                "parental_es_cell_mmrrc_id": {
+                    "type": "string"
+                },
+                "is_parental_cell_line": {
+                    "enum": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                "importation_note": {
+                    "type": "string"
+                },
+                "withdrawn_dt": {
+                    "type": "date"
+                },
+                "prod_hom_f": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_hom_m": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_het_hemi_f": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_het_hemi_m": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_sperm": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_embryos": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_wt_control_f": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_wt_control_m": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_es_cell_line": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                },
+                "prod_other": {
+                    "enum": [
+                        "1",
+                        "0"
+                    ]
+                }
+            },
+            "required": [
+                "center_id",
+                "assigned_dt",
+                "closed_dt",
+                "mice_rcvd_dt",
+                "availability",
+                "germplasm_received",
+                "prod_het_hemi_f",
+                "prod_het_hemi_m",
+                "prod_sperm",
+                "prod_embryos"
+            ]
+        },
+        "pricing": {
+            "properties": {
+                "JAX": {
+                    "properties": {
+                        "cryo-recovery": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "embryo": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "es-cell-line": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "live-mice": {
+                            "enum": [
+                                "Tier 1",
+                                "Tier 2",
+                                "Tier 3",
+                                "none"
+                            ]
+                        },
+                        "sperm": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        }
+                    }
+                },
+                "MU": {
+                    "properties": {
+                        "cryo-recovery": {
+                            "enum": [
+                                "Cryorecovery from Embryo: albino",
+                                "Cryorecovery from Embryo: pigmented",
+                                "Cryorecovery via ICSI: albino",
+                                "Cryorecovery via ICSI: pigmented",
+                                "Cryorecovery via IVF: albino",
+                                "Cryorecovery via IVF: pigmented",
+                                "none"
+                            ]
+                        },
+                        "embryo": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "es-cell-line": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "live-mice": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "sperm": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        }
+                    }
+                },
+                "UCD": {
+                    "properties": {
+                        "cryo-recovery": {
+                            "enum": [
+                                "Tier 1",
+                                "Tier 2",
+                                "Tier 3",
+                                "none"
+                            ]
+                        },
+                        "embryo": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "es-cell-line": {
+                            "enum": [
+                                "Tier 1",
+                                "Tier 2",
+                                "Tier 3",
+                                "Tier 4",
+                                "none"
+                            ]
+                        },
+                        "es-cell-line-high-passage": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "es-cell-line-low-passage": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "es-cell-line-ultra-low-passage": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "hybridoma-cell-line": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "live-mice": {
+                            "enum": [
+                                "Tier 1",
+                                "Tier 2",
+                                "Tier 3",
+                                "Tier 4",
+                                "none"
+                            ]
+                        },
+                        "sperm": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        }
+                    }
+                },
+                "UNC": {
+                    "properties": {
+                        "collaborative-cross-mice": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "cryo-recovery": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "embryo": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "ips-cell-line": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "live-mice": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        },
+                        "sperm": {
+                            "enum": [
+                                "Tier 1",
+                                "none"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
