@@ -45,6 +45,7 @@ use improvement.
 
 This name is required in the schema and is defined as an enum.
 
+```
 	"required": [
 		"published_name",
 		"is_transgenic",
@@ -74,6 +75,7 @@ This name is required in the schema and is defined as an enum.
 			"Backcross or Sib-Mating"
 		]
 	}
+```
 
 All strains should have breeding_system in one of the enum values. Instead,
 there are lots of empty records and free text.
@@ -163,6 +165,7 @@ individual elements? Why do we have so many blank values?
 + There are 69886 records
 + Many properties are empty: ""
 
+```
     property                empty
     --------                -----
 	doc_title               66397
@@ -180,6 +183,7 @@ individual elements? Why do we have so many blank values?
 	breeding_system         40281
 	citation_id             69886 <-- never used
 	etc
+```
 
 ### doc_title
 
@@ -236,6 +240,7 @@ There are lots of ways to craft the HTML so that it _looks_ correct. What is
 the proper way to mark these up? Some kind of XML that gets converted to style,
 I think. Not this mish-mash of sometimes unbalanced tags.
 
+```
 	8029 <i> </i> <sup> <i> </i> </sup>
 	2369 <i> <sup> </sup> </i>
 	979 <i> </i> <sup> <i> </i> </sup> <i> </i> <sup> <i> </i> </sup>
@@ -245,3 +250,4 @@ I think. Not this mish-mash of sometimes unbalanced tags.
 	  1 <i> </i> <sup> <i> </sup> </i> <sup> <i> </i> </sup>
 	  1 <i> <sup> </sup> <sup> </sup> </i>
 	  1 <I> <sup> </sup> </i>
+```
