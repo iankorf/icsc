@@ -43,38 +43,38 @@ use improvement.
 
 ### breeding_system
 
-This name is required in the schema and is defined as an enum.
+"breeding_system" is required in the schema and is defined as an enum.
 
 ```
-	"required": [
-		"published_name",
-		"is_transgenic",
-		"is_sexlinked",
-		"genetic_alteration",
-		"phenotype",
-		"reference",
-		"strain_development",
-		"current_background",
-		"available_control",
-		"coat_color",
-		"breeding_system",  <-------------- here
-		"hide_colony_husbandry_info",
-		"show_repro_stat",
-		"sds_status",
-		"protocol_status",
-		"public_display"
-	]
+"required": [
+	"published_name",
+	"is_transgenic",
+	"is_sexlinked",
+	"genetic_alteration",
+	"phenotype",
+	"reference",
+	"strain_development",
+	"current_background",
+	"available_control",
+	"coat_color",
+	"breeding_system",  <-------------- here
+	"hide_colony_husbandry_info",
+	"show_repro_stat",
+	"sds_status",
+	"protocol_status",
+	"public_display"
+]
 
-	"breeding_system": {
-		"enum": [
-			"Backcross",
-			"Sib-mating",
-			"Random intra-strain mating",
-			"Outcross to non inbred (hybrid or outbred) mate",
-			"Other or uncertain",
-			"Backcross or Sib-Mating"
-		]
-	}
+"breeding_system": {
+	"enum": [
+		"Backcross",
+		"Sib-mating",
+		"Random intra-strain mating",
+		"Outcross to non inbred (hybrid or outbred) mate",
+		"Other or uncertain",
+		"Backcross or Sib-Mating"
+	]
+}
 ```
 
 All strains should have breeding_system in one of the enum values. Instead,
@@ -82,8 +82,6 @@ there are lots of empty records and free text.
 
 + '' 40282 - how can there be so many blank records? this is _required_
 + "Backcross" 687
-	+ '<p>Backcross</p>' 4
-	+ 'Backcross<br>' 3
 + "Sib-mating" 591
 	+ 'Sib mating' 58
 	+ 'Inbred sib-mating' 7
@@ -109,18 +107,16 @@ there are lots of empty records and free text.
 	+ 'Backcross or Inbreeding' 126
 	+ 'Backcross or Sib-mated' 25
 	+ 'Backcross and random intra-strain mating' 27
-	+ 'Backcross and sib-mating<br>' 24
 	+ 'Backcross then sib-mating' 22
 	+ 'Backcross or Random intra-strain mating' 14
 	+ 'Sib mating or Backcross' 8
 	+ 'Backcross or Sib mating' 7
 	+ 'Backross and sib-mating' 6
 	+ 'Backcrossing and random intra-strain mating' 5
-	+ 'Backcrossand sib-mating<br>' 4
 	+ 'Sib-mating or Backcross' 4
 	+ 'Backcross or Intra-strain Random Mating' 4
 	+ 'Backcrossing and sib-mating' 3
-	+ '<p>Backcross and sib-mating</p>' 3
+
 
 ### coat_color
 
@@ -131,9 +127,6 @@ was an enum, would it be enforced? Why are so many blank?
 + 'Black' 8164
 + 'black' 3997
 + 'BLACK' 22
-+ '<p>Black</p>' 3
-+ '1' 4
-+ 'N/A' 4
 
 ### eye_color
 
@@ -150,6 +143,7 @@ blank, why do we even use it? Is Agouti an eye color?
 Why do we store lists as html rather than actual lists? How do we search on
 individual elements? Why do we have so many blank values?
 
+```
 + '' 65148
 + '<li>Cell Biology
             </li>
@@ -158,7 +152,7 @@ individual elements? Why do we have so many blank values?
       <li>Neurobiology
             </li>
       <li>Research Tools</li>' 678
-
+```
 
 ## General Problems ##
 
@@ -166,23 +160,23 @@ individual elements? Why do we have so many blank values?
 + Many properties are empty: ""
 
 ```
-    property                empty
-    --------                -----
-	doc_title               66397
-	published_name          30948
-	genetic_alteration      32767
-	genotyping              51107
-	es_cell_line            67004
-	phenotype               52295
-	founder_background      65195
-	current_background      37117
-	research_applications   65143
-	addl_reference          69824 <--- used 62 times
-	coat_color              38163
-	eye_color               68741	
-	breeding_system         40281
-	citation_id             69886 <-- never used
-	etc
+property                empty
+--------                -----
+doc_title               66397
+published_name          30948
+genetic_alteration      32767
+genotyping              51107
+es_cell_line            67004
+phenotype               52295
+founder_background      65195
+current_background      37117
+research_applications   65143
+addl_reference          69824 <--- used 62 times
+coat_color              38163
+eye_color               68741	
+breeding_system         40281
+citation_id             69886 <-- never used
+etc
 ```
 
 ### doc_title
@@ -205,11 +199,13 @@ isn't this an actual list?
 
 There are a bunch of test pages you can get from API but not website.
 
+```
 + 'Best Strain Ever, BSE' 37127 37084
 + '., .' 37630 36970 36971
 + 'MY Test Strain, Test Strain' 37060 37083
 + 'test, test' 37364 37363 37056
 + '1, 1' 36824 36817 36816 36747
+```
 
 ### founder_background & current_background
 
@@ -224,6 +220,7 @@ happens in almost every field of the JSON. Almost every property has many
 records with these one-space values. There are also a lot of accidental
 embedded HTML tags.
 
+```
 + '' 67007
 + ' ' 1400
 + 'Not applicable' 366
@@ -232,7 +229,7 @@ embedded HTML tags.
 + 'JM8A3 derived from C57BL/6N' 60
 + 'Not applicable<div><br></div>' 3
 + '<p><i>Sag<sup>tm1Jnc</sup></i> allele: unspecified ESCs derived from 129S4/SvEvBrd </p>' 3
-
+```
 
 ### markup_symbol
 
@@ -241,13 +238,13 @@ the proper way to mark these up? Some kind of XML that gets converted to style,
 I think. Not this mish-mash of sometimes unbalanced tags.
 
 ```
-	8029 <i> </i> <sup> <i> </i> </sup>
-	2369 <i> <sup> </sup> </i>
-	979 <i> </i> <sup> <i> </i> </sup> <i> </i> <sup> <i> </i> </sup>
-	  5 <em> <sup> </sup> </em>
-	  4 <i> <sup> </i> </sup>
-	  1 <i> </i> <sup> <i> </i> </sup> <i> <sup> </i> </sup>
-	  1 <i> </i> <sup> <i> </sup> </i> <sup> <i> </i> </sup>
-	  1 <i> <sup> </sup> <sup> </sup> </i>
-	  1 <I> <sup> </sup> </i>
+8029 <i> </i> <sup> <i> </i> </sup>
+2369 <i> <sup> </sup> </i>
+ 979 <i> </i> <sup> <i> </i> </sup> <i> </i> <sup> <i> </i> </sup>
+   5 <em> <sup> </sup> </em>
+   4 <i> <sup> </i> </sup>
+   1 <i> </i> <sup> <i> </i> </sup> <i> <sup> </i> </sup>
+   1 <i> </i> <sup> <i> </sup> </i> <sup> <i> </i> </sup>
+   1 <i> <sup> </sup> <sup> </sup> </i>
+   1 <I> <sup> </sup> </i>
 ```
