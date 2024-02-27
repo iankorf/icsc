@@ -118,12 +118,9 @@ def validate(arg):
 
 def fix1(arg):
 	for data in read_all_sds(arg.data, arg.test):
-		if 'alterations' not in data: continue
-		for alt in data['alterations']:
-			if 'markup_symbol' not in alt: continue
-			if '<' in alt['markup_symbol']: continue
-			print(alt['markup_symbol'], data['mmrrc_id'], sep='\t')
-			#print(json.dumps(data, indent=4))
+		if 'phenotype' not in data: continue
+		if ' eye ' in data['phenotype']:
+			print(data['mmrrc_id'], data['phenotype'], sep='\t')
 
 def fix2(arg):
 	pass
